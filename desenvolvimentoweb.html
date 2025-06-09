@@ -168,6 +168,32 @@
             color: var(--azul-escuro);
             font-size: 1.5rem;
             cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Botão Voltar */
+        .back-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradiente);
+            color: var(--branco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--sombra);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-5px);
+            background: var(--azul-vibrante);
         }
 
         /* Hero Section para página de serviço */
@@ -642,6 +668,11 @@
             nav ul {
                 flex-direction: column;
                 gap: 1.5rem;
+                align-items: flex-start;
+            }
+            
+            .header-container a.btn-primary {
+                display: none;
             }
             
             .service-hero {
@@ -731,10 +762,10 @@
                     <li><a href="index.html#portfolio">Portfólio</a></li>
                     <li><a href="index.html#depoimentos">Depoimentos</a></li>
                     <li><a href="index.html#contato">Contato</a></li>
+                    <li class="mobile-only"><a href="index.html#contato" class="btn btn-primary">Orçamento</a></li>
                 </ul>
             </nav>
             
-            <a href="index.html#contato" class="btn btn-primary">Orçamento</a>
         </div>
     </header>
 
@@ -894,3 +925,61 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const carrossel = document.querySelector('.carrossel');
+        const slides = document.querySelectorAll('.carrossel-slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const indicators = document.querySelectorAll('.carrossel-indicator');
+        
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        // Função para atualizar a posição do carrossel
+        function updateCarrossel() {
+            carrossel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Atualiza os indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // Event listeners para os botões de navegação
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarrossel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarrossel();
+        });
+
+        // Event listeners para os indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarrossel();
+            });
+        });
+
+        // Opcional: Transição automática
+        let interval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarrossel();
+        }, 5000); // Altere o intervalo conforme necessário
+
+        // Pausar a transição automática ao interagir
+        carrossel.addEventListener('mouseenter', () => clearInterval(interval));
+        carrossel.addEventListener('mouseleave', () => {
+            interval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarrossel();
+            }, 5000);
+        });
+    });
+</script>
+</body>
+</html>

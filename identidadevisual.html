@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automação | Hizzy</title>
+    <title>Identidade Visual | Hizzy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/logo.png?v=2" type="image/png">
+    
     <style>
+        /* Reset e Variáveis (mantendo as mesmas do site principal) */
         :root {
             --azul-escuro: #0A2463;
             --azul-vibrante: #3E92CC;
@@ -21,34 +23,44 @@
             --gradiente: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-vibrante) 100%);
             --gradiente-destaque: linear-gradient(135deg, var(--destaque) 0%, #FF6B6B 100%);
         }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', -apple-system, sans-serif;
         }
+        
         body {
             background: var(--branco);
             color: var(--preto);
             line-height: 1.7;
             overflow-x: hidden;
         }
-        html { scroll-behavior: smooth; }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Layout */
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
         }
+        
         section {
             padding: 6rem 0;
             position: relative;
         }
+        
         .section-title {
             text-align: center;
             margin-bottom: 4rem;
             position: relative;
         }
+        
         .section-title h2 {
             font-size: 2.8rem;
             margin-bottom: 1.5rem;
@@ -59,6 +71,7 @@
             position: relative;
             display: inline-block;
         }
+        
         .section-title h2:after {
             content: '';
             position: absolute;
@@ -70,12 +83,14 @@
             background: var(--gradiente);
             border-radius: 2px;
         }
+        
         .section-title p {
             color: #5A5A5A;
             max-width: 700px;
             margin: 0 auto;
             font-size: 1.1rem;
         }
+
         /* Header */
         header {
             position: fixed;
@@ -86,12 +101,14 @@
             z-index: 1000;
             transition: all 0.4s;
         }
+        
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 0;
         }
+        
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
@@ -104,13 +121,18 @@
             align-items: center;
             gap: 0.5rem;
         }
-        .logo i { font-size: 1.5rem; }
+        
+        .logo i {
+            font-size: 1.5rem;
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
             align-items: center;
         }
+        
         nav a {
             text-decoration: none;
             color: var(--preto);
@@ -119,7 +141,11 @@
             position: relative;
             font-size: 1rem;
         }
-        nav a:hover { color: var(--azul-vibrante); }
+        
+        nav a:hover {
+            color: var(--azul-vibrante);
+        }
+        
         nav a:after {
             content: '';
             position: absolute;
@@ -130,7 +156,11 @@
             background: var(--gradiente);
             transition: width 0.3s;
         }
-        nav a:hover:after { width: 100%; }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -138,16 +168,36 @@
             color: var(--azul-escuro);
             font-size: 1.5rem;
             cursor: pointer;
+            z-index: 1001;
         }
-        /* Hero Section */
+
+        /* Hero Section para página de serviço */
         .service-hero {
-            background: linear-gradient(135deg, rgba(10, 36, 99, 0.9), rgba(62, 146, 204, 0.8));
+            background: linear-gradient(135deg, rgba(216, 49, 91, 0.9), rgba(255, 107, 107, 0.8));
             color: var(--branco);
             padding: 12rem 0 6rem;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
+        
+        .service-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .service-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .service-hero .btn {
+            margin: 0 0.5rem;
+        }
+        
         .service-hero-pattern {
             position: absolute;
             top: 0;
@@ -158,19 +208,8 @@
             opacity: 0.5;
             z-index: 0;
         }
-        .service-hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        .service-hero p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            opacity: 0.9;
-        }
-        .service-hero .btn { margin: 0 0.5rem; }
-        /* Botões */
+
+        /* Botões (mantendo os mesmos do site principal) */
         .btn {
             display: inline-block;
             padding: 0.9rem 2.2rem;
@@ -183,42 +222,151 @@
             border: none;
             font-size: 1rem;
         }
+        
         .btn-primary {
             background: var(--gradiente);
             color: var(--branco);
             box-shadow: 0 4px 15px rgba(10, 36, 99, 0.3);
         }
+        
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(10, 36, 99, 0.4);
             background: linear-gradient(135deg, var(--azul-vibrante) 0%, var(--azul-escuro) 100%);
         }
+        
         .btn-secondary {
             background: var(--branco);
             color: var(--azul-escuro);
             border: 2px solid var(--azul-escuro);
         }
+        
         .btn-secondary:hover {
             background: var(--azul-escuro);
             color: var(--branco);
             transform: translateY(-3px);
         }
+        
         .btn-accent {
             background: var(--gradiente-destaque);
             color: var(--branco);
             box-shadow: 0 4px 15px rgba(216, 49, 91, 0.3);
         }
+        
         .btn-accent:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(216, 49, 91, 0.4);
         }
-        /* Serviços de Automação */
+
+        /* Carrossel Moderno */
+        .carrossel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: var(--sombra);
+        }
+        
+        .carrossel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carrossel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .carrossel-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .carrossel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(216, 49, 91, 0.9), transparent);
+            padding: 2rem;
+            color: var(--branco);
+        }
+        
+        .carrossel-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .carrossel-caption p {
+            opacity: 0.9;
+        }
+        
+        .carrossel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            z-index: 10;
+        }
+        
+        .carrossel-btn {
+            background: rgba(255, 255, 255, 0.3);
+            color: var(--branco);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carrossel-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .carrossel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .carrossel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .carrossel-indicator.active {
+            background: var(--branco);
+            transform: scale(1.2);
+        }
+
+        /* Detalhes do Serviço */
         .service-details {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
             margin-top: 4rem;
         }
+        
         .service-feature {
             background: var(--branco);
             padding: 2rem;
@@ -227,34 +375,41 @@
             transition: all 0.3s;
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
+        
         .service-feature:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
+        
         .service-feature i {
             font-size: 2.5rem;
-            color: var(--azul-vibrante);
+            color: var(--destaque);
             margin-bottom: 1.5rem;
         }
+        
         .service-feature h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--azul-escuro);
         }
+        
         .service-feature p {
             color: #5A5A5A;
             margin-bottom: 1.5rem;
         }
+        
         .service-feature ul {
             list-style: none;
             margin-top: 1rem;
         }
+        
         .service-feature li {
             margin-bottom: 0.8rem;
             position: relative;
             padding-left: 1.8rem;
             color: #5A5A5A;
         }
+        
         .service-feature li:before {
             content: '\f00c';
             font-family: 'Font Awesome 6 Free';
@@ -263,12 +418,14 @@
             left: 0;
             color: var(--verde-menta);
         }
+
         /* Processo de Trabalho */
         .process-steps {
             position: relative;
             max-width: 800px;
             margin: 4rem auto 0;
         }
+        
         .process-steps:before {
             content: '';
             position: absolute;
@@ -276,14 +433,20 @@
             left: 30px;
             height: 100%;
             width: 3px;
-            background: var(--gradiente);
+            background: var(--gradiente-destaque);
+            border-radius: 3px;
         }
+        
         .process-step {
             position: relative;
             padding-left: 80px;
             margin-bottom: 3rem;
         }
-        .process-step:last-child { margin-bottom: 0; }
+        
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+        
         .step-number {
             position: absolute;
             left: 0;
@@ -291,45 +454,54 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: var(--gradiente);
+            background: var(--gradiente-destaque);
             color: var(--branco);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             font-weight: 700;
-            box-shadow: 0 4px 15px rgba(10, 36, 99, 0.3);
+            box-shadow: 0 4px 15px rgba(216, 49, 91, 0.3);
         }
+        
         .step-content {
             background: var(--branco);
             padding: 2rem;
             border-radius: 12px;
             box-shadow: var(--sombra);
         }
+        
         .step-content h3 {
             color: var(--azul-escuro);
             margin-bottom: 1rem;
         }
-        .step-content p { color: #5A5A5A; }
+        
+        .step-content p {
+            color: #5A5A5A;
+        }
+
         /* CTA Section */
         .cta-section {
-            background: var(--gradiente);
+            background: var(--gradiente-destaque);
             color: var(--branco);
             text-align: center;
             padding: 5rem 0;
             position: relative;
             overflow: hidden;
         }
+        
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
         }
+        
         .cta-section p {
             max-width: 700px;
             margin: 0 auto 2.5rem;
             opacity: 0.9;
             font-size: 1.2rem;
         }
+        
         .cta-pattern {
             position: absolute;
             top: 0;
@@ -339,25 +511,29 @@
             background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
             opacity: 0.3;
         }
-        /* Footer */
+
+        /* Footer (mantendo o mesmo do site principal) */
         footer {
             padding: 6rem 0 2rem;
             background: var(--azul-escuro);
             color: var(--branco);
             position: relative;
         }
+        
         .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
         }
+        
         .footer-col h4 {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
         }
+        
         .footer-col h4:after {
             content: '';
             position: absolute;
@@ -368,27 +544,38 @@
             background: var(--gradiente-destaque);
             border-radius: 3px;
         }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.8rem; }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col li {
+            margin-bottom: 0.8rem;
+        }
+        
         .footer-col a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: all 0.3s;
         }
+        
         .footer-col a:hover {
             color: var(--branco);
             padding-left: 5px;
         }
+        
         .footer-about p {
             opacity: 0.8;
             margin-bottom: 1.5rem;
             line-height: 1.7;
         }
+        
         .social-links {
             display: flex;
             gap: 1rem;
             margin-top: 1.5rem;
         }
+        
         .social-links a {
             width: 40px;
             height: 40px;
@@ -400,10 +587,12 @@
             transition: all 0.3s;
             color: var(--branco);
         }
+        
         .social-links a:hover {
             background: var(--gradiente-destaque);
             transform: translateY(-3px);
         }
+        
         .copyright {
             text-align: center;
             padding-top: 2rem;
@@ -412,13 +601,27 @@
             opacity: 0.7;
             font-size: 0.9rem;
         }
+
         /* Responsivo */
         @media (max-width: 992px) {
-            .service-hero { padding: 10rem 0 5rem; }
-            .service-hero h1 { font-size: 2.8rem; }
+            .service-hero {
+                padding: 10rem 0 5rem;
+            }
+            
+            .service-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .carrossel-img {
+                height: 400px;
+            }
         }
+        
         @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             nav {
                 position: fixed;
                 top: 80px;
@@ -432,43 +635,83 @@
                 transition: all 0.4s;
                 z-index: 999;
             }
+            
             nav.active {
                 transform: translateY(0);
                 opacity: 1;
             }
+            
             nav ul {
                 flex-direction: column;
                 gap: 1.5rem;
             }
-            .service-hero { padding: 8rem 0 4rem; }
-            .service-hero h1 { font-size: 2.2rem; }
-            .service-hero p { font-size: 1.1rem; }
-            .header-container .btn-primary {
-                display: none;
-            }
-            .mobile-menu-btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
+            
+            .service-hero {
+                padding: 8rem 0 4rem;
             }
             
-            /* O resto do seu código existente... */
-            nav {
-                position: fixed;
-                top: 80px;
-                /* ... */
+            .service-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .service-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .carrossel-img {
+                height: 300px;
+            }
+            
+            .carrossel-caption {
+                padding: 1.5rem;
+            }
+            
+            .carrossel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
+        
         @media (max-width: 576px) {
-            .section-title h2 { font-size: 2.2rem; }
-            .service-hero h1 { font-size: 2rem; }
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .service-hero h1 {
+                font-size: 2rem;
+            }
+            
             .service-hero .btn {
                 display: block;
                 width: 80%;
                 margin: 0 auto 1rem;
+            }
+            
+            .carrossel-img {
+                height: 250px;
+            }
+            
+            .carrossel-caption h3 {
+                font-size: 1.2rem;
+            }
+            
+            .carrossel-caption p {
+                font-size: 0.9rem;
+            }
+            
+            .process-step {
+                padding-left: 60px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .step-content {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -478,16 +721,21 @@
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo"><i class="fas fa-rocket"></i> Hizzy</a>
-            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
             <nav>
                 <ul>
-                    <li><a href="index.html#hero">Início</a></li>
+                    <li><a href="index.html">Início</a></li>
                     <li><a href="index.html#servicos">Serviços</a></li>
                     <li><a href="index.html#portfolio">Portfólio</a></li>
                     <li><a href="index.html#depoimentos">Depoimentos</a></li>
                     <li><a href="index.html#contato">Contato</a></li>
                 </ul>
             </nav>
+            
             <a href="index.html#contato" class="btn btn-primary">Orçamento</a>
         </div>
     </header>
@@ -496,180 +744,105 @@
     <section class="service-hero">
         <div class="service-hero-pattern"></div>
         <div class="container">
-            <h1>Automação Inteligente</h1>
-            <p>Automatize processos no <strong>Instagram</strong>, <strong>WhatsApp</strong> e <strong>Facebook</strong> para ganhar tempo, escalar vendas e transformar o atendimento do seu negócio.</p>
+            <h1>Identidade Visual</h1>
+            <p>Soluções criativas e estratégicas que traduzem a essência da sua marca em elementos visuais memoráveis</p>
             <div>
                 <a href="#contato" class="btn btn-accent">Solicitar Orçamento</a>
-                <a href="#servicos" class="btn btn-secondary">Ver Soluções</a>
+                <a href="#portfolio" class="btn btn-secondary">Ver Portfólio</a>
             </div>
         </div>
     </section>
 
-    <!-- Serviços de Automação -->
+    <!-- Carrossel de Projetos -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Projetos de Identidade Visual</h2>
+                <p>Confira alguns dos trabalhos que desenvolvemos para nossos clientes</p>
+            </div>
+            
+            <div class="carrossel-container">
+                <div class="carrossel">
+                    <div class="carrossel-slide">
+                        <img src="https://images.unsplash.com/photo-1611162617213-6d7d0f9a9c3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Identidade Visual Completa" class="carrossel-img">
+                        <div class="carrossel-caption">
+                            <h3>Identidade Visual Completa</h3>
+                            <p>Logotipo, cores, tipografia e aplicações para empresa de tecnologia</p>
+                        </div>
+                    </div>
+                    <div class="carrossel-slide">
+                        <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1468&q=80" alt="Redesign de Marca" class="carrossel-img">
+                        <div class="carrossel-caption">
+                            <h3>Redesign de Marca</h3>
+                            <p>Atualização completa da identidade visual de uma marca tradicional</p>
+                        </div>
+                    </div>
+                    <div class="carrossel-slide">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Identidade para Redes Sociais" class="carrossel-img">
+                        <div class="carrossel-caption">
+                            <h3>Identidade para Redes Sociais</h3>
+                            <p>Kit completo de templates e elementos visuais para redes sociais</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carrossel-nav">
+                    <button class="carrossel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carrossel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <div class="carrossel-indicators">
+                    <div class="carrossel-indicator active"></div>
+                    <div class="carrossel-indicator"></div>
+                    <div class="carrossel-indicator"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detalhes do Serviço -->
     <section id="servicos">
         <div class="container">
             <div class="section-title">
-                <h2>Soluções de Automação</h2>
-                <p>Automatize tarefas, conquiste mais clientes e aumente sua produtividade com nossos serviços para redes sociais e mensageria.</p>
+                <h2>Nossas Soluções em Identidade Visual</h2>
+                <p>Oferecemos serviços completos para construir ou renovar a identidade visual da sua marca</p>
             </div>
+            
             <div class="service-details">
                 <div class="service-feature">
-                    <i class="fab fa-instagram"></i>
-                    <h3>Automação para Instagram</h3>
-                    <p>Automatize respostas no Direct, gere leads, envie catálogos, realize sorteios e aumente o engajamento do seu perfil.</p>
+                    <i class="fas fa-palette"></i>
+                    <h3>Criação de Logotipo</h3>
+                    <p>Logotipos únicos e estratégicos que representam a essência da sua marca.</p>
                     <ul>
-                        <li>Respostas automáticas no Direct</li>
-                        <li>Envio de catálogos e links</li>
-                        <li>Captura de leads e integração com CRM</li>
-                        <li>Fluxos de atendimento personalizados</li>
-                        <li>Relatórios de interações</li>
+                        <li>Estudo de conceito e briefing</li>
+                        <li>Propostas exclusivas</li>
+                        <li>Versões para diferentes usos</li>
+                        <li>Arquivos editáveis</li>
+                        <li>Manual de aplicação</li>
                     </ul>
                 </div>
+                
                 <div class="service-feature">
-                    <i class="fab fa-whatsapp"></i>
-                    <h3>Automação para WhatsApp</h3>
-                    <p>Atenda clientes 24h, envie mensagens automáticas, colete pedidos, gere orçamentos e integre com sistemas de vendas.</p>
+                    <i class="fas fa-id-card-alt"></i>
+                    <h3>Papelaria Corporativa</h3>
+                    <p>Conjunto completo de materiais para sua comunicação profissional.</p>
                     <ul>
-                        <li>Chatbot inteligente para atendimento</li>
-                        <li>Envio de mensagens em massa</li>
-                        <li>Respostas rápidas e menus interativos</li>
-                        <li>Integração com sistemas de pedidos</li>
-                        <li>Relatórios de conversas</li>
+                        <li>Cartão de visita</li>
+                        <li>Assinatura de e-mail</li>
+                        <li>Papel timbrado e envelopes</li>
+                        <li>Apresentações institucionais</li>
+                        <li>Relatórios e materiais impressos</li>
                     </ul>
                 </div>
+                
                 <div class="service-feature">
-                    <i class="fab fa-facebook-messenger"></i>
-                    <h3>Automação para Facebook</h3>
-                    <p>Automatize o Messenger da sua página, envie respostas instantâneas, capture contatos e aumente a satisfação do cliente.</p>
+                    <i class="fas fa-hashtag"></i>
+                    <h3>Identidade para Redes Sociais</h3>
+                    <p>Kit completo para manter consistência visual em todas as plataformas.</p>
                     <ul>
-                        <li>Respostas automáticas no Messenger</li>
-                        <li>Fluxos de perguntas e respostas</li>
-                        <li>Envio de promoções e novidades</li>
-                        <li>Captação de leads e integração</li>
-                        <li>Relatórios de atendimento</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Processo de Trabalho -->
-    <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>Como Funciona</h2>
-                <p>Nosso processo é simples, transparente e focado em resultados para o seu negócio.</p>
-            </div>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Diagnóstico</h3>
-                        <p>Entendemos seus objetivos, canais e necessidades para propor a melhor automação.</p>
-                    </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Planejamento</h3>
-                        <p>Desenhamos fluxos, integrações e personalizações para cada canal (Instagram, WhatsApp, Facebook).</p>
-                    </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Desenvolvimento</h3>
-                        <p>Implementamos, testamos e ajustamos a automação para garantir máxima eficiência.</p>
-                    </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Entrega e Suporte</h3>
-                        <p>Treinamos sua equipe, entregamos relatórios e oferecemos suporte contínuo.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section" id="contato">
-        <div class="cta-pattern"></div>
-        <div class="container">
-            <h2>Automatize seu negócio com a Hizzy</h2>
-            <p>Solicite um orçamento personalizado e descubra como podemos transformar seu atendimento digital.</p>
-            <a href="index.html#contato" class="btn btn-accent">Entrar em Contato</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col footer-about">
-                    <a href="#" class="logo"><i class="fas fa-rocket"></i> Hizzy</a>
-                    <p>Transformando ideias em experiências digitais memoráveis. Nossa missão é ajudar empresas a crescer com soluções tecnológicas inovadoras.</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/hizzybr/"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#">Desenvolvimento Web</a></li>
-                        <li><a href="#">Automação</a></li>
-                        <li><a href="#">Identidade Visual</a></li>
-                        <li><a href="#">Edição de Vídeos</a></li>
-                        <li><a href="#">Marketing Digital</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Links Úteis</h4>
-                    <ul>
-                        <li><a href="#">Portfólio</a></li>
-                        <li><a href="#">Processo</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Termos de Serviço</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Cookies</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Hizzy Soluções Digitais. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const nav = document.querySelector('nav');
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = nav.classList.contains('active') ?
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        // Fecha menu ao clicar fora
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn') && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-    </script>
-</body>
-</html>
+                        <li>Avatar e capa para redes</li>
+                        <li>Templates para posts</li>
+                        <li>Destaques para stories</li>
+                        <li>Elementos gráficos personalizados</li>
+                        <li>Guia de uso da marca</li>
+                   
