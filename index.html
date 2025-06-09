@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hizzy | Soluções Digitais Premium</title>
+    <title>Hizzy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="assets/rocket-solid.svg">
     <style>
         /* Reset e Variáveis */
         :root {
@@ -227,12 +228,14 @@
             position: relative;
             overflow: hidden;
             background: linear-gradient(135deg, rgba(255, 250, 255, 0.9) 0%, rgba(255, 250, 255, 0.7) 100%);
+            padding-top: 80px; /* Adiciona espaço para o header fixo */
         }
-        
+
         .hero-content {
             max-width: 600px;
             position: relative;
             z-index: 2;
+            margin-top: -50px; /* Ajuste para centralizar verticalmente */
         }
         
         .hero-content h1 {
@@ -264,13 +267,17 @@
         
         .hero-img {
             position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 55%;
+            top: 0%;
+            right: 10%;
+            transform: translateY(-50%);
+            width: 40%;
             max-width: 700px;
             z-index: 1;
             animation: flutuar 8s ease-in-out infinite;
         }
+
+
+
         
         .hero-pattern {
             position: absolute;
@@ -1515,7 +1522,7 @@
                 </div>
             </div>
             <div class="hero-img">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Soluções Digitais">
+                <img src="assets/Mascote Hizzy.png" alt="Soluções Digitais">
             </div>
             <a href="#servicos" class="scroll-down">
                 <i class="fas fa-chevron-down"></i>
@@ -1573,7 +1580,7 @@
         <div class="container">
             <div class="stats-container">
                 <div class="stat-item">
-                    <div class="stat-number">150+</div>
+                    <div class="stat-number">50+</div>
                     <div class="stat-label">Projetos Concluídos</div>
                 </div>
                 <div class="stat-item">
@@ -1581,11 +1588,11 @@
                     <div class="stat-label">Clientes Satisfeitos</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">12</div>
+                    <div class="stat-number">4</div>
                     <div class="stat-label">Prêmios Recebidos</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">5+</div>
+                    <div class="stat-number">2+</div>
                     <div class="stat-label">Anos de Experiência</div>
                 </div>
             </div>
@@ -1602,19 +1609,19 @@
             <div class="portfolio-container">
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" alt="Projeto 1" class="portfolio-img">
+                        <img src="assets/Logo Maedu.jpeg" alt="Projeto 1" class="portfolio-img">
                         <div class="portfolio-overlay">
-                            <h3>Site Institucional</h3>
-                            <p>Cliente: Empresa X</p>
-                            <a href="#">Ver detalhes <i class="fas fa-external-link-alt"></i></a>
+                            <h3>Site Empresarial</h3>
+                            <p>Cliente: Maedu Store</p>
+                            <a href="https://maedu.store/" target="_blank">Ver detalhes <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projeto 2" class="portfolio-img">
+                        <img src="" alt="Projeto 2" class="portfolio-img">
                         <div class="portfolio-overlay">
-                            <h3>Identidade Visual</h3>
-                            <p>Cliente: Startup Y</p>
-                            <a href="#">Ver detalhes <i class="fas fa-external-link-alt"></i></a>
+                            <h3>Site / Sistema de Automação</h3>
+                            <p>Cliente: Legacy Style</p>
+                            <a href="https://legacy-style.vercel.app/">Ver detalhes <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <div class="portfolio-item">
@@ -1650,12 +1657,12 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p>"A Hizzy transformou completamente nossa presença online. O site que desenvolveram superou todas as nossas expectativas e já gerou um aumento de 40% em nossos leads em apenas 3 meses."</p>
+                    <p>"A Hizzy transformou completamente nossa presença online. O site que desenvolveram superou todas as nossas expectativas e já gerou um aumento de 40% em nossos leads em apenas 2 meses."</p>
                     <div class="depoimento-author">
                         <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Cliente 1">
                         <div class="author-info">
-                            <h4>Ana Silva</h4>
-                            <span>CEO, Empresa X</span>
+                            <h4>Maria Eduarda</h4>
+                            <span>CEO, Empresa Maedu Store</span>
                         </div>
                     </div>
                 </div>
@@ -1671,8 +1678,8 @@
                     <div class="depoimento-author">
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente 2">
                         <div class="author-info">
-                            <h4>Carlos Mendes</h4>
-                            <span>Diretor, Startup Y</span>
+                            <h4>Cauã Eduardo</h4>
+                            <span>Proprietário, Barbearia Legacy Style</span>
                         </div>
                     </div>
                 </div>
@@ -1686,10 +1693,10 @@
                     </div>
                     <p>"A identidade visual criada pela Hizzy capturou perfeitamente a essência da nossa marca. O feedback de nossos clientes tem sido extremamente positivo e já vimos um aumento no reconhecimento da marca."</p>
                     <div class="depoimento-author">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente 3">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Cliente 3">
                         <div class="author-info">
-                            <h4>Juliana Oliveira</h4>
-                            <span>Fundadora, Marca W</span>
+                            <h4>José Ferreira</h4>
+                            <span>Fundador, Fn Empreendimentos</span>
                         </div>
                     </div>
                 </div>
@@ -1711,7 +1718,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>O tempo de desenvolvimento varia conforme a complexidade do projeto. Sites institucionais simples podem levar de 2 a 3 semanas, enquanto e-commerces mais complexos podem levar de 4 a 6 semanas. Após a análise do seu projeto, forneceremos um cronograma detalhado.</p>
+                        <p>O tempo de desenvolvimento varia conforme a complexidade do projeto. Sites institucionais simples podem levar de 2 a 3 semanas, enquanto e-commerces mais complexos podem levar de 6 a 8 semanas. Após a análise do seu projeto, forneceremos um cronograma detalhado.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1738,7 +1745,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Aceitamos diversas formas de pagamento: transferência bancária, cartão de crédito (em até 12x), PIX e boleto. O projeto é dividido em parcelas, com uma entrada no início e o restante conforme marcos de entrega.</p>
+                        <p>Aceitamos diversas formas de pagamento: transferência bancária, cartão de crédito (em até 12x), e PIX. O projeto é dividido em parcelas, com uma entrada no início pagando a mão de obra e o restante conforme marcos de entrega.</p>
                     </div>
                 </div>
             </div>
@@ -1756,21 +1763,21 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <p>contato@hizzy.digital</p>
+                            <p>hizzy.com.br@gmail.com</p>
                         </div>
                     </div>
                     <div class="contato-item">
                         <i class="fas fa-phone-alt"></i>
                         <div>
                             <h4>Telefone</h4>
-                            <p>(11) 98765-4321</p>
+                            <p>(41) 99593-2150</p>
                         </div>
                     </div>
                     <div class="contato-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Endereço</h4>
-                            <p>Av. Paulista, 1000 - São Paulo/SP</p>
+                            <p>Curitiba, Pinheirinho - Paraná</p>
                         </div>
                     </div>
                 </div>
@@ -1796,12 +1803,12 @@
             <div class="footer-container">
                 <div class="footer-col footer-about">
                     <a href="#" class="logo"><i class="fas fa-rocket"></i> Hizzy</a>
-                    <p>Transformando ideias em experiências digitais memoráveis desde 2018. Nossa missão é ajudar empresas a crescer com soluções tecnológicas inovadoras.</p>
+                    <p>Transformando ideias em experiências digitais memoráveis. Nossa missão é ajudar empresas a crescer com soluções tecnológicas inovadoras.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-behance"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="https://www.instagram.com/hizzybr/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+
                     </div>
                 </div>
                 <div class="footer-col">
@@ -1817,11 +1824,9 @@
                 <div class="footer-col">
                     <h4>Links Úteis</h4>
                     <ul>
-                        <li><a href="#">Blog</a></li>
                         <li><a href="#">Portfólio</a></li>
                         <li><a href="#">Processo</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Carreiras</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1830,12 +1835,11 @@
                         <li><a href="#">Termos de Serviço</a></li>
                         <li><a href="#">Política de Privacidade</a></li>
                         <li><a href="#">Cookies</a></li>
-                        <li><a href="#">LGPD</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Hizzy Soluções Digitais. Todos os direitos reservados.</p>
+                <p>&copy; 2025 Hizzy Soluções Digitais. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
