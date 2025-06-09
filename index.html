@@ -1096,6 +1096,186 @@
                 right: 5%;
             }
         }
+        @media (max-width: 768px) {
+    /* Header melhorado para mobile */
+    .header-container {
+        padding: 1rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+        margin-left: 1rem; /* Adiciona espaço à esquerda */
+    }
+    
+    .mobile-menu-btn {
+        margin-right: 1rem; /* Adiciona espaço à direita */
+        font-size: 1.5rem;
+    }
+    
+    /* Esconde o botão de orçamento no mobile */
+    .header-container .btn-primary {
+        display: none;
+    }
+    
+    nav {
+        top: 70px;
+        padding: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    nav ul {
+        gap: 1.2rem;
+    }
+    
+    nav a {
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+    }
+    /* Hero section melhorada */
+    #hero {
+        min-height: 90vh;
+        padding-top: 80px;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+        line-height: 1.3;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+        margin: 0 auto 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+    
+    /* Serviços melhorados */
+    .servicos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .servico-card {
+        padding: 2rem;
+    }
+    
+    /* Estatísticas melhoradas */
+    .stats-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    /* Portfólio melhorado */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-item {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Depoimentos melhorados */
+    .depoimento-card {
+        padding: 2rem;
+    }
+    
+    /* FAQ melhorado */
+    .faq-question {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+    }
+    
+    /* Contato melhorado */
+    .contato-form input,
+    .contato-form textarea {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+    
+    .contato-item i {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    /* Footer melhorado */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-col {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Chatbot melhorado */
+    .chatbot-trigger {
+        width: 55px;
+        height: 55px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+    
+    .chatbot-container {
+        width: 90%;
+        right: 5%;
+        bottom: 7rem;
+    }
+    
+    /* Back to top melhorado */
+    .back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 6.5rem;
+        right: 1.5rem;
+    }
+}
+
+    @media (max-width: 480px) {
+        /* Ajustes extras para telas muito pequenas */
+        .section-title h2 {
+            font-size: 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+        }
+        
+        .stats-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .contato-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+    }
     </style>
 </head>
 <body>
@@ -1119,7 +1299,7 @@
             </nav>
             
             <a href="#contato" class="btn btn-primary">Orçamento</a>
-               </div>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -1692,6 +1872,29 @@
         });
         
         window.addEventListener('scroll', animateOnScroll);
+
+        // Melhorar usabilidade do menu mobile
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn') && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        // Evitar zoom em inputs no iOS
+        document.addEventListener('DOMContentLoaded', () => {
+            if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+                document.querySelectorAll('input, select, textarea').forEach(element => {
+                    element.style.fontSize = '16px';
+                });
+            }
+        });
+
+        // Melhorar experiência de toque
+        document.querySelectorAll('a, button, [role="button"]').forEach(element => {
+            element.style.webkitTapHighlightColor = 'rgba(62, 146, 204, 0.2)';
+            element.addEventListener('touchstart', () => {}, {passive: true});
+        });
     </script>
 </body>
 </html>
