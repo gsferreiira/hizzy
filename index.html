@@ -290,24 +290,6 @@
             opacity: 0.8;
             z-index: -1;
         }
-
-        /* Mensagens do formulário */
-        .success-message {
-            background-color: #4CB944;
-            color: white;
-            border-left: 5px solid #2E7D32;
-        }
-
-        .error-message {
-            background-color: #D8315B;
-            color: white;
-            border-left: 5px solid #B71C1C;
-        }
-
-        /* Loading spinner */
-        .fa-spinner {
-            margin-right: 8px;
-        }
         
         @keyframes flutuar {
             0%, 100% { transform: translateY(0); }
@@ -1801,15 +1783,14 @@
                     </div>
                 </div>
             </div>
-           <div class="contato-form">
-                <form id="formContato">
-                    <input type="text" name="nome" placeholder="Seu nome" required>
-                    <input type="email" name="email" placeholder="Seu email" required>
-                    <input type="tel" name="telefone" placeholder="Seu telefone">
-                    <textarea name="mensagem" placeholder="Conte-nos sobre seu projeto" required></textarea>
+            <div class="contato-form">
+                <form>
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu email" required>
+                    <input type="tel" placeholder="Seu telefone">
+                    <textarea placeholder="Conte-nos sobre seu projeto" required></textarea>
                     <button type="submit" class="btn btn-accent">Enviar Mensagem</button>
                 </form>
-                <div id="formMessage" style="display: none; margin-top: 20px; padding: 15px; border-radius: 5px;"></div>
             </div>
         </div>
         <svg class="contato-pattern" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -1895,69 +1876,6 @@
 
     <!-- Scripts -->
     <script>
-        // Form submission com AJAX
-        const formContato = document.getElementById('formContato');
-        const formMessage = document.getElementById('formMessage');
-
-        if (formContato) {
-            formContato.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Mostrar loading
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                submitBtn.disabled = true;
-                
-                // Resetar mensagem anterior
-                formMessage.style.display = 'none';
-                formMessage.className = '';
-                
-                // Coletar dados do formulário
-                const formData = new FormData(this);
-                const jsonData = {};
-                formData.forEach((value, key) => jsonData[key] = value);
-                
-                // Enviar via AJAX
-                fetch('enviar-email.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(jsonData)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro na rede');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Mostrar mensagem de sucesso/erro
-                    formMessage.style.display = 'block';
-                    formMessage.textContent = data.message;
-                    
-                    if (data.success) {
-                        formMessage.classList.add('success-message');
-                        formContato.reset();
-                    } else {
-                        formMessage.classList.add('error-message');
-                    }
-                })
-                .catch(error => {
-                    formMessage.style.display = 'block';
-                    formMessage.classList.add('error-message');
-                    formMessage.textContent = 'Erro ao enviar mensagem. Por favor, tente novamente mais tarde.';
-                    console.error('Error:', error);
-                })
-                .finally(() => {
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-                    
-                    // Rolagem suave para a mensagem
-                    formMessage.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('nav');
