@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenvolvimento Web | Hizzy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/logo.png?v=2" type="image/png">
+    
+    <style>
+        /* Reset e Variáveis (mantendo as mesmas do site principal) */
+        :root {
+            --azul-escuro: #0A2463;
+            --azul-vibrante: #3E92CC;
+            --verde-menta: #4CB944;
+            --branco: #FFFAFF;
+            --preto: #1E1B18;
+            --destaque: #D8315B;
+            --sombra: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --gradiente: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-vibrante) 100%);
+            --gradiente-destaque: linear-gradient(135deg, var(--destaque) 0%, #FF6B6B 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, sans-serif;
+        }
+        
+        body {
+            background: var(--branco);
+            color: var(--preto);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--azul-escuro), var(--azul-vibrante));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradiente);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #5A5A5A;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 250, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--sombra);
+            z-index: 1000;
+            transition: all 0.4s;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradiente);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo i {
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--preto);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        nav a:hover {
+            color: var(--azul-vibrante);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--gradiente);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--azul-escuro);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section para página de serviço */
+        .service-hero {
+            background: linear-gradient(135deg, rgba(10, 36, 99, 0.9), rgba(62, 146, 204, 0.8));
+            color: var(--branco);
+            padding: 12rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .service-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .service-hero .btn {
+            margin: 0 0.5rem;
+        }
+        
+        .service-hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        /* Botões (mantendo os mesmos do site principal) */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradiente);
+            color: var(--branco);
+            box-shadow: 0 4px 15px rgba(10, 36, 99, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(10, 36, 99, 0.4);
+            background: linear-gradient(135deg, var(--azul-vibrante) 0%, var(--azul-escuro) 100%);
+        }
+        
+        .btn-secondary {
+            background: var(--branco);
+            color: var(--azul-escuro);
+            border: 2px solid var(--azul-escuro);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--azul-escuro);
+            color: var(--branco);
+            transform: translateY(-3px);
+        }
+        
+        .btn-accent {
+            background: var(--gradiente-destaque);
+            color: var(--branco);
+            box-shadow: 0 4px 15px rgba(216, 49, 91, 0.3);
+        }
+        
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(216, 49, 91, 0.4);
+        }
+
+        /* Carrossel Moderno */
+        .carrossel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: var(--sombra);
+        }
+        
+        .carrossel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carrossel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .carrossel-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .carrossel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 36, 99, 0.9), transparent);
+            padding: 2rem;
+            color: var(--branco);
+        }
+        
+        .carrossel-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .carrossel-caption p {
+            opacity: 0.9;
+        }
+        
+        .carrossel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            z-index: 10;
+        }
+        
+        .carrossel-btn {
+            background: rgba(255, 255, 255, 0.3);
+            color: var(--branco);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carrossel-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .carrossel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .carrossel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .carrossel-indicator.active {
+            background: var(--branco);
+            transform: scale(1.2);
+        }
+
+        /* Detalhes do Serviço */
+        .service-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .service-feature {
+            background: var(--branco);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--sombra);
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-feature i {
+            font-size: 2.5rem;
+            color: var(--azul-vibrante);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--azul-escuro);
+        }
+        
+        .service-feature p {
+            color: #5A5A5A;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-feature ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .service-feature li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+            color: #5A5A5A;
+        }
+        
+        .service-feature li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--verde-menta);
+        }
+
+        /* Processo de Trabalho */
+        .process-steps {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto 0;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30px;
+            height: 100%;
+            width: 3px;
+            background: var(--gradiente);
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 3rem;
+        }
+        
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradiente);
+            color: var(--branco);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(10, 36, 99, 0.3);
+        }
+        
+        .step-content {
+            background: var(--branco);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+        }
+        
+        .step-content h3 {
+            color: var(--azul-escuro);
+            margin-bottom: 1rem;
+        }
+        
+        .step-content p {
+            color: #5A5A5A;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradiente);
+            color: var(--branco);
+            text-align: center;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+            font-size: 1.2rem;
+        }
+        
+        .cta-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        /* Footer (mantendo o mesmo do site principal) */
+        footer {
+            padding: 6rem 0 2rem;
+            background: var(--azul-escuro);
+            color: var(--branco);
+            position: relative;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            bottom: -8px;
+            left: 0;
+            background: var(--gradiente-destaque);
+            border-radius: 3px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: var(--branco);
+            padding-left: 5px;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: var(--branco);
+        }
+        
+        .social-links a:hover {
+            background: var(--gradiente-destaque);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 992px) {
+            .service-hero {
+                padding: 10rem 0 5rem;
+            }
+            
+            .service-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .carrossel-img {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--branco);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 2rem;
+                transform: translateY(-150%);
+                opacity: 0;
+                transition: all 0.4s;
+                z-index: 999;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .service-hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .service-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .service-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .carrossel-img {
+                height: 300px;
+            }
+            
+            .carrossel-caption {
+                padding: 1.5rem;
+            }
+            
+            .carrossel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .service-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .service-hero .btn {
+                display: block;
+                width: 80%;
+                margin: 0 auto 1rem;
+            }
+            
+            .carrossel-img {
+                height: 250px;
+            }
+            
+            .carrossel-caption h3 {
+                font-size: 1.2rem;
+            }
+            
+            .carrossel-caption p {
+                font-size: 0.9rem;
+            }
+            
+            .process-step {
+                padding-left: 60px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .step-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo"><i class="fas fa-rocket"></i> Hizzy</a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="index.html#portfolio">Portfólio</a></li>
+                    <li><a href="index.html#depoimentos">Depoimentos</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <a href="index.html#contato" class="btn btn-primary">Orçamento</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="service-hero-pattern"></div>
+        <div class="container">
+            <h1>Desenvolvimento Web</h1>
+            <p>Soluções digitais personalizadas que impulsionam seu negócio e criam experiências memoráveis para seus clientes</p>
+            <div>
+                <a href="#contato" class="btn btn-accent">Solicitar Orçamento</a>
+                <a href="#portfolio" class="btn btn-secondary">Ver Portfólio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrossel de Projetos -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Projetos Web</h2>
+                <p>Confira alguns dos sites e sistemas web que desenvolvemos para nossos clientes</p>
+            </div>
+            
+            <div class="carrossel-container">
+                <div class="carrossel">
+                    <div class="carrossel-slide">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Site Institucional" class="carrossel-img">
+                        <div class="carrossel-caption">
+                            <h3>Site Institucional Moderno</h3>
+                            <p>Desenvolvido para empresa de tecnologia com design responsivo e alta performance</p>
+                        </div>
+                    </div>
+                    <div class="carrossel-slide">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="E-commerce" class="carrossel-img">
+                        <div class="carrossel-caption">
+                            <h3>Loja Virtual Completa</h3>
+                            <p>E-commerce com integração de pagamentos, gestão de estoque e relatórios avançados</p>
+                        </div>
+                    </div>
+                    <div class="carrossel-slide">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sistema Web" class="carrossel-img">
+                        <div class="carrossel-caption">
+                            <h3>Sistema de Gestão Personalizado</h3>
+                            <p>Solução desenvolvida sob medida para otimizar processos internos da empresa</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carrossel-nav">
+                    <button class="carrossel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carrossel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <div class="carrossel-indicators">
+                    <div class="carrossel-indicator active"></div>
+                    <div class="carrossel-indicator"></div>
+                    <div class="carrossel-indicator"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detalhes do Serviço -->
+    <section id="servicos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossas Soluções Web</h2>
+                <p>Oferecemos serviços completos de desenvolvimento web para atender todas as necessidades do seu negócio</p>
+            </div>
+            
+            <div class="service-details">
+                <div class="service-feature">
+                    <i class="fas fa-globe"></i>
+                    <h3>Sites Institucionais</h3>
+                    <p>Presença digital profissional que transmite credibilidade e atrai novos clientes para seu negócio.</p>
+                    <ul>
+                        <li>Design moderno e responsivo</li>
+                        <li>Otimizado para mecanismos de busca</li>
+                        <li>Integração com redes sociais</li>
+                        <li>Formulários de contato inteligentes</li>
+                        <li>Painel administrativo fácil de usar</li>
+                    </ul>
+                </div>
+                
+                <div class="service-feature">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Lojas Virtuais</h3>
+                    <p>Plataformas completas para vender seus produtos online com segurança e eficiência.</p>
+                    <ul>
+                        <li>Catálogo de produtos organizado</li>
+                        <li>Múltiplas formas de pagamento</li>
+                        <li>Gestão de fretes e entregas</li>
+                        <li>Área do cliente</li>
+                        <li>Relatórios de vendas</li>
+                    </ul>
+                </div>
+                
+                <div class="service-feature">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Sistemas Web Personalizados</h3>
+                    <p>Soluções sob medida para automatizar processos e aumentar a produtividade da sua empresa.</p>
+                    <ul>
+                        <li>Desenvolvido para suas necessidades</li>
+                        <li>Integração com outros sistemas</li>
+                        <li>Controle de acesso por níveis</li>
+                        <li>Relatórios personalizados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col footer-about">
+                    <a href="#" class="logo"><i class="fas fa-rocket"></i> Hizzy</a>
+                    <p>Transformando ideias em experiências digitais memoráveis. Nossa missão é ajudar empresas a crescer com soluções tecnológicas inovadoras.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/hizzybr/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#">Desenvolvimento Web</a></li>
+                        <li><a href="#">Automação</a></li>
+                        <li><a href="#">Identidade Visual</a></li>
+                        <li><a href="#">Edição de Vídeos</a></li>
+                        <li><a href="#">Marketing Digital</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="#">Portfólio</a></li>
+                        <li><a href="#">Processo</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Termos de Serviço</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Hizzy Soluções Digitais. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
