@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Identidade Visual | Hizzy</title>
+    <title>Produção de Vídeos | Hizzy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
     <link rel="icon" href="assets/logo.png?v=2" type="image/png">
     
     <style>
-        /* Reset e Variáveis */
+        /* Reset e Variáveis (mantendo as mesmas do site principal) */
         :root {
             --azul-escuro: #0A2463;
             --azul-vibrante: #3E92CC;
@@ -91,7 +91,7 @@
             font-size: 1.1rem;
         }
 
-        /* Header Moderno */
+        /* Header */
         header {
             position: fixed;
             width: 100%;
@@ -171,7 +171,32 @@
             z-index: 1001;
         }
 
-        /* Hero Section Moderno */
+        /* Botão Voltar */
+        .back-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradiente);
+            color: var(--branco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--sombra);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-5px);
+            background: var(--azul-vibrante);
+        }
+
+        /* Hero Section para página de serviço */
         .service-hero {
             background: linear-gradient(135deg, rgba(10, 36, 99, 0.9), rgba(62, 146, 204, 0.8));
             color: var(--branco);
@@ -209,7 +234,7 @@
             z-index: 0;
         }
 
-        /* Botões Modernos */
+        /* Botões (mantendo os mesmos do site principal) */
         .btn {
             display: inline-block;
             padding: 0.9rem 2.2rem;
@@ -258,108 +283,95 @@
             box-shadow: 0 8px 20px rgba(216, 49, 91, 0.4);
         }
 
-        /* Carrossel Moderno */
-        .carrossel-container {
+        /* Galeria de Vídeos */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .video-card {
             position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            overflow: hidden;
             border-radius: 16px;
+            overflow: hidden;
             box-shadow: var(--sombra);
+            transition: all 0.3s;
         }
         
-        .carrossel {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         
-        .carrossel-slide {
-            min-width: 100%;
+        .video-thumbnail {
             position: relative;
-        }
-        
-        .carrossel-img {
             width: 100%;
-            height: 500px;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            display: block;
+            transition: transform 0.5s;
         }
         
-        .carrossel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(10, 36, 99, 0.9), transparent);
-            padding: 2rem;
-            color: var(--branco);
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
         }
         
-        .carrossel-caption h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .carrossel-caption p {
-            opacity: 0.9;
-        }
-        
-        .carrossel-nav {
+        .play-icon {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 1rem;
-            z-index: 10;
-        }
-        
-        .carrossel-btn {
-            background: rgba(255, 255, 255, 0.3);
-            color: var(--branco);
-            border: none;
-            width: 50px;
-            height: 50px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .carrossel-btn:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-        
-        .carrossel-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-        
-        .carrossel-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
+            color: var(--destaque);
+            font-size: 1.5rem;
+            opacity: 0;
             transition: all 0.3s;
         }
         
-        .carrossel-indicator.active {
+        .video-card:hover .play-icon {
+            opacity: 1;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
             background: var(--branco);
-            transform: scale(1.2);
+        }
+        
+        .video-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--azul-escuro);
+        }
+        
+        .video-info p {
+            color: #5A5A5A;
+            font-size: 0.9rem;
+        }
+        
+        .video-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--verde-menta);
+            color: var(--branco);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 1rem;
         }
 
-        /* Detalhes do Serviço - Layout Moderno */
+        /* Detalhes do Serviço */
         .service-details {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -374,8 +386,7 @@
             box-shadow: var(--sombra);
             transition: all 0.3s;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
+            text-align: center;
         }
         
         .service-feature:hover {
@@ -387,11 +398,6 @@
             font-size: 2.5rem;
             color: var(--azul-vibrante);
             margin-bottom: 1.5rem;
-            transition: all 0.3s;
-        }
-        
-        .service-feature:hover i {
-            transform: scale(1.1);
         }
         
         .service-feature h3 {
@@ -408,6 +414,7 @@
         .service-feature ul {
             list-style: none;
             margin-top: 1rem;
+            text-align: left;
         }
         
         .service-feature li {
@@ -426,7 +433,7 @@
             color: var(--verde-menta);
         }
 
-        /* Processo de Trabalho Moderno */
+        /* Processo de Trabalho */
         .process-steps {
             position: relative;
             max-width: 800px;
@@ -441,7 +448,6 @@
             height: 100%;
             width: 3px;
             background: var(--gradiente);
-            border-radius: 3px;
         }
         
         .process-step {
@@ -469,11 +475,6 @@
             font-size: 1.5rem;
             font-weight: 700;
             box-shadow: 0 4px 15px rgba(10, 36, 99, 0.3);
-            transition: all 0.3s;
-        }
-        
-        .process-step:hover .step-number {
-            transform: scale(1.1);
         }
         
         .step-content {
@@ -481,11 +482,6 @@
             padding: 2rem;
             border-radius: 12px;
             box-shadow: var(--sombra);
-            transition: all 0.3s;
-        }
-        
-        .process-step:hover .step-content {
-            transform: translateX(10px);
         }
         
         .step-content h3 {
@@ -497,7 +493,52 @@
             color: #5A5A5A;
         }
 
-        /* CTA Section Moderno */
+        /* Equipamentos */
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .equipment-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--branco);
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+            transition: all 0.3s;
+        }
+        
+        .equipment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .equipment-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, rgba(10, 36, 99, 0.1), rgba(62, 146, 204, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--azul-vibrante);
+            font-size: 2rem;
+        }
+        
+        .equipment-item h4 {
+            color: var(--azul-escuro);
+            margin-bottom: 0.5rem;
+        }
+        
+        .equipment-item p {
+            color: #5A5A5A;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
         .cta-section {
             background: var(--gradiente);
             color: var(--branco);
@@ -529,7 +570,7 @@
             opacity: 0.3;
         }
 
-        /* Footer Moderno */
+        /* Footer (mantendo o mesmo do site principal) */
         footer {
             padding: 6rem 0 2rem;
             background: var(--azul-escuro);
@@ -619,39 +660,42 @@
             font-size: 0.9rem;
         }
 
-        /* Botão Voltar ao Topo */
-        .back-btn {
+        /* Modal de Vídeo */
+        .video-modal {
+            display: none;
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradiente);
-            color: var(--branco);
-            border-radius: 50%;
-            display: flex;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--sombra);
-            z-index: 999;
+        }
+        
+        .video-modal iframe {
+            width: 80%;
+            height: 80%;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: var(--branco);
+            font-size: 2rem;
             cursor: pointer;
             transition: all 0.3s;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
         }
         
-        .back-btn.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-btn:hover {
-            transform: translateY(-5px);
-            background: var(--azul-vibrante);
+        .close-modal:hover {
+            color: var(--destaque);
         }
 
-        /* Responsivo Aprimorado */
+        /* Responsivo */
         @media (max-width: 992px) {
             .service-hero {
                 padding: 10rem 0 5rem;
@@ -659,14 +703,6 @@
             
             .service-hero h1 {
                 font-size: 2.8rem;
-            }
-            
-            .carrossel-img {
-                height: 400px;
-            }
-            
-            .service-details {
-                gap: 2rem;
             }
         }
         
@@ -677,20 +713,20 @@
             
             nav {
                 position: fixed;
-                top: 0;
+                top: 80px;
                 left: 0;
                 width: 100%;
-                height: 100vh;
                 background: var(--branco);
-                padding: 6rem 2rem 2rem;
-                transform: translateX(100%);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 2rem;
+                transform: translateY(-150%);
                 opacity: 0;
-                transition: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+                transition: all 0.4s;
                 z-index: 999;
             }
             
             nav.active {
-                transform: translateX(0);
+                transform: translateY(0);
                 opacity: 1;
             }
             
@@ -716,30 +752,25 @@
                 font-size: 1.1rem;
             }
             
-            .service-hero .btn-container {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
+            .video-modal iframe {
+                width: 90%;
+                height: 50%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .service-hero h1 {
+                font-size: 2rem;
             }
             
             .service-hero .btn {
-                margin: 0;
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .carrossel-img {
-                height: 300px;
-            }
-            
-            .carrossel-caption {
-                padding: 1.5rem;
-            }
-            
-            .carrossel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+                display: block;
+                width: 80%;
+                margin: 0 auto 1rem;
             }
             
             .process-step {
@@ -756,76 +787,9 @@
                 padding: 1.5rem;
             }
             
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .section-title h2 {
-                font-size: 2.2rem;
-                margin-bottom: 1rem;
-            }
-            
-            .section-title p {
-                font-size: 1rem;
-            }
-            
-            .service-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .carrossel-img {
-                height: 250px;
-            }
-            
-            .carrossel-caption h3 {
-                font-size: 1.2rem;
-            }
-            
-            .carrossel-caption p {
-                font-size: 0.9rem;
-            }
-            
-            .service-feature {
-                padding: 1.5rem;
-            }
-            
-            .cta-section h2 {
-                font-size: 2rem;
-            }
-            
-            .cta-section p {
-                font-size: 1rem;
-            }
-        }
-        
-        @media (max-width: 400px) {
-            .service-hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .service-hero p {
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .carrossel-img {
-                height: 200px;
-            }
-            
-            .process-step {
-                padding-left: 50px;
-            }
-            
-            .step-number {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+            .video-modal iframe {
+                width: 95%;
+                height: 40%;
             }
         }
     </style>
@@ -850,8 +814,6 @@
                     <li class="mobile-only"><a href="index.html#contato" class="btn btn-primary">Orçamento</a></li>
                 </ul>
             </nav>
-            
-
         </div>
     </header>
 
@@ -859,279 +821,318 @@
     <section class="service-hero">
         <div class="service-hero-pattern"></div>
         <div class="container">
-            <h1>Identidade Visual</h1>
-            <p>Soluções criativas e estratégicas que traduzem a essência da sua marca em elementos visuais memoráveis</p>
-            <div class="btn-container">
+            <h1>Produção e Edição de Vídeos</h1>
+            <p>Conteúdo visual impactante que conta a história da sua marca e engaja seu público-alvo</p>
+            <div>
                 <a href="#contato" class="btn btn-accent">Solicitar Orçamento</a>
                 <a href="#portfolio" class="btn btn-secondary">Ver Portfólio</a>
             </div>
         </div>
     </section>
 
-    <!-- Carrossel de Projetos -->
+    <!-- Galeria de Vídeos -->
     <section id="portfolio">
         <div class="container">
             <div class="section-title">
-                <h2>Nossos Projetos de Identidade Visual</h2>
-                <p>Confira alguns dos trabalhos que desenvolvemos para nossos clientes</p>
+                <h2>Nosso Trabalho em Vídeo</h2>
+                <p>Confira alguns dos nossos projetos de produção e edição de vídeos</p>
             </div>
             
-            <div class="carrossel-container">
-                <div class="carrossel">
-                    <div class="carrossel-slide">
-                        <img src="https://images.unsplash.com/photo-1611162617213-6d7d0f9a9c3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Identidade Visual Completa" class="carrossel-img">
-                        <div class="carrossel-caption">
-                            <h3>Identidade Visual Completa</h3>
-                            <p>Logotipo, cores, tipografia e aplicações para empresa de tecnologia</p>
+            <div class="video-gallery">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1574717024453-3545ed969a95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Vídeo Institucional">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
                         </div>
                     </div>
-                    <div class="carrossel-slide">
-                        <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1468&q=80" alt="Redesign de Marca" class="carrossel-img">
-                        <div class="carrossel-caption">
-                            <h3>Redesign de Marca</h3>
-                            <p>Atualização completa da identidade visual de uma marca tradicional</p>
+                    <div class="video-info">
+                        <h3>Vídeo Institucional</h3>
+                        <p>Produção completa para empresa de tecnologia</p>
+                        <span class="video-tag">INSTITUCIONAL</span>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Comercial de Produto">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
                         </div>
                     </div>
-                    <div class="carrossel-slide">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Identidade para Redes Sociais" class="carrossel-img">
-                        <div class="carrossel-caption">
-                            <h3>Identidade para Redes Sociais</h3>
-                            <p>Kit completo de templates e elementos visuais para redes sociais</p>
+                    <div class="video-info">
+                        <h3>Comercial de Produto</h3>
+                        <p>Campanha para lançamento de novo produto</p>
+                        <span class="video-tag">COMERCIAL</span>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Evento Corporativo">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
                         </div>
-                                        </div>
-            </div>
-            
-            <div class="carrossel-nav">
-                <button class="carrossel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="carrossel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            
-            <div class="carrossel-indicators">
-                <div class="carrossel-indicator active"></div>
-                <div class="carrossel-indicator"></div>
-                <div class="carrossel-indicator"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Detalhes do Serviço -->
-<section>
-    <div class="container">
-        <div class="section-title">
-            <h2>Nossa Abordagem</h2>
-            <p>Criamos identidades visuais que contam histórias e conectam marcas com seu público</p>
-        </div>
-        
-        <div class="service-details">
-            <div class="service-feature">
-                <i class="fas fa-palette"></i>
-                <h3>Design Personalizado</h3>
-                <p>Cada elemento é criado sob medida para representar a essência única da sua marca.</p>
-                <ul>
-                    <li>Logotipo exclusivo</li>
-                    <li>Cores estratégicas</li>
-                    <li>Tipografia customizada</li>
-                    <li>Elementos gráficos únicos</li>
-                </ul>
-            </div>
-            
-            <div class="service-feature">
-                <i class="fas fa-chess"></i>
-                <h3>Estratégia de Marca</h3>
-                <p>Desenvolvemos identidades que comunicam valores e posicionamento de mercado.</p>
-                <ul>
-                    <li>Análise de concorrência</li>
-                    <li>Definição de público-alvo</li>
-                    <li>Diretrizes de aplicação</li>
-                    <li>Manual da marca completo</li>
-                </ul>
-            </div>
-            
-            <div class="service-feature">
-                <i class="fas fa-cubes"></i>
-                <h3>Aplicações Práticas</h3>
-                <p>Todos os elementos necessários para aplicar sua identidade em diversos materiais.</p>
-                <ul>
-                    <li>Arquivos em múltiplos formatos</li>
-                    <li>Templates para redes sociais</li>
-                    <li>Modelos de materiais gráficos</li>
-                    <li>Versões alternativas</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Processo de Trabalho -->
-<section>
-    <div class="container">
-        <div class="section-title">
-            <h2>Nosso Processo</h2>
-            <p>Um método comprovado para criar identidades visuais impactantes e eficazes</p>
-        </div>
-        
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Briefing e Pesquisa</h3>
-                    <p>Entendemos seu negócio, objetivos e público-alvo através de questionários detalhados e análise de mercado.</p>
-                </div>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Conceito e Direção</h3>
-                    <p>Desenvolvemos propostas criativas com diferentes abordagens visuais para sua avaliação.</p>
-                </div>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Desenvolvimento</h3>
-                    <p>Refinamos a direção escolhida, criando todos os elementos da identidade visual completa.</p>
-                </div>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>Aplicação e Entrega</h3>
-                    <p>Preparamos todos os arquivos e documentos necessários para implementação em diversos meios.</p>
+                    </div>
+                    <div class="video-info">
+                        <h3>Evento Corporativo</h3>
+                        <p>Cobertura completa e edição profissional</p>
+                        <span class="video-tag">EVENTO</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- CTA Section -->
-<section class="cta-section" id="contato">
-    <div class="cta-pattern"></div>
-    <div class="container">
-        <h2>Pronto para transformar sua marca?</h2>
-        <p>Solicite um orçamento sem compromisso e leve sua identidade visual para o próximo nível</p>
-        <a href="#contato" class="btn btn-accent">Solicitar Orçamento</a>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="footer-container">
-            <div class="footer-col footer-about">
-                <h4>Sobre a Hizzy</h4>
-                <p>Especialistas em criar identidades visuais que contam histórias e conectam marcas com seu público de forma memorável.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-behance"></i></a>
-                    <a href="#"><i class="fab fa-dribbble"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+        <!-- Detalhes do Serviço -->
+    <section id="servicos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços de Vídeo</h2>
+                <p>Soluções completas para todas as necessidades de produção audiovisual</p>
+            </div>
+            
+            <div class="service-details">
+                <div class="service-feature">
+                    <i class="fas fa-film"></i>
+                    <h3>Vídeos Institucionais</h3>
+                    <p>Conte sua história de forma profissional e impactante, destacando os valores e diferenciais da sua marca.</p>
+                    <ul>
+                        <li>Roteiro personalizado</li>
+                        <li>Filmagem profissional</li>
+                        <li>Edição criativa</li>
+                        <li>Trilha sonora exclusiva</li>
+                        <li>Motion graphics</li>
+                    </ul>
+                </div>
+                
+                <div class="service-feature">
+                    <i class="fas fa-ad"></i>
+                    <h3>Comerciais e Propagandas</h3>
+                    <p>Crie campanhas publicitárias que engajam e convertem, com mensagens claras e criativas.</p>
+                    <ul>
+                        <li>Conceito criativo</li>
+                        <li>Produção de alta qualidade</li>
+                        <li>Edição dinâmica</li>
+                        <li>Versões para diferentes plataformas</li>
+                        <li>Otimização para redes sociais</li>
+                    </ul>
+                </div>
+                
+                <div class="service-feature">
+                    <i class="fas fa-video"></i>
+                    <h3>Edição Profissional</h3>
+                    <p>Transforme suas filmagens em conteúdo de alto impacto com nossa edição profissional.</p>
+                    <ul>
+                        <li>Correção de cor</li>
+                        <li>Efeitos visuais</li>
+                        <li>Transições criativas</li>
+                        <li>Trilha sonora e mixagem</li>
+                        <li>Legendas e gráficos</li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="footer-col">
-                <h4>Serviços</h4>
-                <ul>
-                    <li><a href="identidadevisual.html">Identidade Visual</a></li>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Social Media</a></li>
-                    <li><a href="#">Ilustração</a></li>
-                    <li><a href="#">Motion Design</a></li>
-                </ul>
+        </div>
+    </section>
+
+    <!-- Processo de Trabalho -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nosso Processo Criativo</h2>
+                <p>Entenda como transformamos sua ideia em um vídeo de alta qualidade</p>
             </div>
             
-            <div class="footer-col">
-                <h4>Links Úteis</h4>
-                <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="index.html#portfolio">Portfólio</a></li>
-                    <li><a href="index.html#depoimentos">Depoimentos</a></li>
-                    <li><a href="index.html#contato">Contato</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Contato</h4>
-                <ul>
-                    <li><i class="fas fa-envelope"></i> contato@hizzy.com</li>
-                    <li><i class="fas fa-phone"></i> (11) 98765-4321</li>
-                    <li><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</li>
-                </ul>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Briefing e Planejamento</h3>
+                        <p>Entendemos suas necessidades, objetivos e público-alvo para criar um conceito que comunique sua mensagem de forma eficaz.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Pré-Produção</h3>
+                        <p>Desenvolvemos roteiro, storyboard, seleção de locações, elenco e todo o planejamento necessário para a filmagem.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Produção</h3>
+                        <p>Filmagem profissional com equipamentos de alta qualidade, direção experiente e atenção aos detalhes.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Pós-Produção</h3>
+                        <p>Edição criativa, correção de cor, inserção de efeitos, trilha sonora e finalização para garantir um produto de excelência.</p>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div class="copyright">
-            <p>&copy; 2023 Hizzy. Todos os direitos reservados.</p>
+    </section>
+
+    <!-- Equipamentos -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Equipamentos</h2>
+                <p>Tecnologia de ponta para garantir a melhor qualidade em seus vídeos</p>
+            </div>
+            
+            <div class="equipment-grid">
+                <div class="equipment-item">
+                    <div class="equipment-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h4>Câmeras 4K</h4>
+                    <p>Câmeras profissionais para captação de imagens em ultra alta definição</p>
+                </div>
+                
+                <div class="equipment-item">
+                    <div class="equipment-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h4>Áudio Profissional</h4>
+                    <p>Microfones lapela, direcionais e equipamentos de captação de áudio de alta qualidade</p>
+                </div>
+                
+                <div class="equipment-item">
+                    <div class="equipment-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Iluminação</h4>
+                    <p>Kits de iluminação profissional para garantir a melhor qualidade de imagem</p>
+                </div>
+                
+                <div class="equipment-item">
+                    <div class="equipment-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h4>Edição</h4>
+                    <p>Softwares profissionais para edição, efeitos visuais e correção de cor</p>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-pattern"></div>
+        <div class="container">
+            <h2>Pronto para transformar sua ideia em vídeo?</h2>
+            <p>Entre em contato agora mesmo e vamos criar conteúdo visual que realmente impacta seu público</p>
+            <a href="#contato" class="btn btn-accent">Solicitar Orçamento</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col footer-about">
+                    <a href="#" class="logo"><i class="fas fa-rocket"></i> Hizzy</a>
+                    <p>Transformando ideias em experiências visuais memoráveis. Nossa missão é ajudar empresas a se comunicarem de forma impactante através do vídeo.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/hizzybr/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#">Produção de Vídeos</a></li>
+                        <li><a href="#">Edição Profissional</a></li>
+                        <li><a href="#">Motion Graphics</a></li>
+                        <li><a href="#">Comerciais</a></li>
+                        <li><a href="#">Cobertura de Eventos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="#">Portfólio</a></li>
+                        <li><a href="#">Processo</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="tel:+5511999999999"><i class="fas fa-phone"></i> (11) 99999-9999</a></li>
+                        <li><a href="mailto:contato@hizzy.com"><i class="fas fa-envelope"></i> contato@hizzy.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> São Paulo, SP</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Hizzy Soluções Digitais. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Vídeo -->
+    <div class="video-modal" id="videoModal">
+        <span class="close-modal"><i class="fas fa-times"></i></span>
+        <iframe src="" frameborder="0" allowfullscreen></iframe>
     </div>
-</footer>
 
-<!-- Botão Voltar ao Topo -->
-<a href="#" class="back-btn"><i class="fas fa-arrow-up"></i></a>
-
-<script>
-    // Script para o carrossel
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carrossel-slide');
-    const indicators = document.querySelectorAll('.carrossel-indicator');
-    
-    function showSlide(index) {
-        if (index >= slides.length) currentSlide = 0;
-        if (index < 0) currentSlide = slides.length - 1;
+    <script>
+        // Menu Mobile
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
         
-        document.querySelector('.carrossel').style.transform = `translateX(-${currentSlide * 100}%)`;
-        
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === currentSlide);
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
         });
-    }
-    
-    document.querySelector('.next-btn').addEventListener('click', () => {
-        currentSlide++;
-        showSlide(currentSlide);
-    });
-    
-    document.querySelector('.prev-btn').addEventListener('click', () => {
-        currentSlide--;
-        showSlide(currentSlide);
-    });
-    
-    indicators.forEach((indicator, i) => {
-        indicator.addEventListener('click', () => {
-            currentSlide = i;
-            showSlide(currentSlide);
+
+        // Modal de Vídeo
+        const videoCards = document.querySelectorAll('.video-card');
+        const videoModal = document.getElementById('videoModal');
+        const closeModal = document.querySelector('.close-modal');
+        const videoIframe = videoModal.querySelector('iframe');
+        
+        videoCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Aqui você pode adicionar o link do vídeo específico
+                videoIframe.src = 'https://www.youtube.com/embed/SEU_VIDEO_ID';
+                videoModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
         });
-    });
-    
-    // Auto-avanço do carrossel
-    setInterval(() => {
-        currentSlide++;
-        showSlide(currentSlide);
-    }, 5000);
-    
-    // Menu mobile
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('nav');
-    
-    menuBtn.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        menuBtn.innerHTML = nav.classList.contains('active') 
-            ? '<i class="fas fa-times"></i>' 
-            : '<i class="fas fa-bars"></i>';
-    });
-    
-    // Botão voltar ao topo
-    const backBtn = document.querySelector('.back-btn');
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backBtn.classList.add('active');
-        } else {
-            backBtn.classList.remove('active');
-        }
-    });
-</script>
+        
+        closeModal.addEventListener('click', () => {
+            videoIframe.src = '';
+            videoModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Fechar modal ao clicar fora
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoIframe.src = '';
+                videoModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Botão Voltar ao Topo
+        window.addEventListener('scroll', () => {
+            const backBtn = document.querySelector('.back-btn');
+            if (window.scrollY > 300) {
+                backBtn.style.display = 'flex';
+            } else {
+                backBtn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
