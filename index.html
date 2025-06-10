@@ -591,6 +591,7 @@
             color: var(--branco);
             position: relative;
             overflow: hidden;
+
         }
         
         .contato-container {
@@ -598,7 +599,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             position: relative;
-            z-index: 1;
+            z-index: 3;
         }
         
         .contato-info h3 {
@@ -667,7 +668,7 @@
         
         .contato-form textarea {
             height: 150px;
-            resize: vertical;
+            resize: none;
         }
         
         .contato-form input::placeholder,
@@ -1788,17 +1789,66 @@
                     </div>
                 </div>
             </div>
-            <div class="contato-form">
-                <form action="https://www.formbackend.com/f/cfec79ea301a374f" method="POST" enctype="text/plain">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://hizzy.com.br/obrigado.html">
-                    <input type="text" name="nome" placeholder="Seu nome" required>
-                    <input type="email" name="email" placeholder="Seu email" required>
-                    <input type="tel" name="telefone" placeholder="Seu telefone">
-                    <textarea name="mensagem" placeholder="Conte-nos sobre seu projeto" required></textarea>
-                    <button type="submit" class="btn btn-accent">Enviar Mensagem</button>
+            <form
+                action="https://www.formbackend.com/f/cfec79ea301a374f"
+                method="POST"
+                style="font-family: Arial, sans-serif; max-width: 800px; width: 100%; margin: 0 0 0 auto; color: #FFFAFF; padding: 30px; transform: translate(10px, -60px);"
+                >
+                <label for="name" style="display: block; margin-bottom: 10px; font-weight: bold; font-size: 18px;">Nome</label>
+                <div>
+                    <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    required
+                    placeholder="Digite seu nome completo"
+                    style="width: 100%; padding: 15px; background-color: rgba(255, 255, 255, 0.2); border: none; border-radius: 6px; color: #FFFAFF; font-size: 16px;"
+                    >
+                </div>
+
+                <label for="email" style="display: block; margin-bottom: 10px; font-weight: bold; font-size: 18px;">Email</label>
+                <div>
+                    <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    placeholder="seu@email.com"
+                    style="width: 100%; padding: 15px; background-color: rgba(255, 255, 255, 0.2); border: none; border-radius: 6px; color: #FFFAFF; font-size: 16px;"
+                    >
+                </div>
+
+                <label for="phone" style="display: block; margin-bottom: 10px; font-weight: bold; font-size: 18px;">Telefone</label>
+                <div>
+                    <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone"
+                    placeholder="(00) 00000-0000"
+                    style="width: 100%; padding: 15px; background-color: rgba(255, 255, 255, 0.2); border: none; border-radius: 6px; color: #FFFAFF; font-size: 16px;"
+                    >
+                </div>
+
+                <label for="message" style="display: block; margin-bottom: 10px; font-weight: bold; font-size: 18px;">Mensagem</label>
+                <div>
+                    <textarea 
+                    id="message" 
+                    name="message" 
+                    rows="6"
+                    placeholder="Escreva sua mensagem aqui..."
+                    style="width: 100%; padding: 15px; background-color: rgba(255, 255, 255, 0.2); border: none; border-radius: 6px; color: #FFFAFF; font-size: 16px; resize: none;"
+                    ></textarea>
+                </div>
+
+                <button 
+                    type="submit"
+                    style="background-color: #D8315B; color: #FFFAFF; border: none; padding: 16px 32px; font-size: 18px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background-color 0.3s;"
+                    onmouseover="this.style.backgroundColor='#C02A4F'"
+                    onmouseout="this.style.backgroundColor='#D8315B'"
+                >
+                    Enviar
+                </button>
                 </form>
-            </div>
         </div>
         <svg class="contato-pattern" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
             <path fill="var(--branco)" d="M0,0 L500,0 L500,500 C300,400 200,300 0,500 Z"></path>
