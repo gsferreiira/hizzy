@@ -286,6 +286,39 @@
             box-shadow: 0 8px 20px rgba(216, 49, 91, 0.4);
         }
 
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 7rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradiente);
+            color: var(--branco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(10, 36, 99, 0.3);
+            cursor: pointer;
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(10, 36, 99, 0.4);
+        }
+
         /* Galeria de Vídeos */
         .video-gallery {
             display: grid;
@@ -840,7 +873,7 @@
             <div class="video-gallery">
                 <div class="video-card">
                     <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1574717024453-3545ed969a95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Vídeo Institucional">
+                        <img src="assets/Mascote Hizzy.png" alt="Vídeo Institucional">
                         <div class="play-icon">
                             <i class="fas fa-play"></i>
                         </div>
@@ -854,7 +887,7 @@
                 
                 <div class="video-card">
                     <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Comercial de Produto">
+                        <img src="assets/logolegacy.png" alt="Comercial de Produto">
                         <div class="play-icon">
                             <i class="fas fa-play"></i>
                         </div>
@@ -868,7 +901,7 @@
                 
                 <div class="video-card">
                     <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Evento Corporativo">
+                        <img src="assets/sitelegacy.png" alt="Evento Corporativo">
                         <div class="play-icon">
                             <i class="fas fa-play"></i>
                         </div>
@@ -1040,11 +1073,10 @@
                 <div class="footer-col">
                     <h4>Serviços</h4>
                     <ul>
-                        <li><a href="#">Produção de Vídeos</a></li>
-                        <li><a href="#">Edição Profissional</a></li>
-                        <li><a href="#">Motion Graphics</a></li>
-                        <li><a href="#">Comerciais</a></li>
-                        <li><a href="#">Cobertura de Eventos</a></li>
+                        <li><a href="desenvolvimentoweb.html">Desenvolvimento Web</a></li>
+                        <li><a href="automacao.html">Automação</a></li>
+                        <li><a href="identidadevisual.html">Identidade Visual</a></li>
+                        <li><a href="criacaodevideos.html">Edição de Vídeos</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1070,13 +1102,35 @@
         </div>
     </footer>
 
-    <!-- Modal de Vídeo -->
-    <div class="video-modal" id="videoModal">
-        <span class="close-modal"><i class="fas fa-times"></i></span>
-        <iframe src="" frameborder="0" allowfullscreen></iframe>
-    </div>
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
-    <script>
+    <!-- Modal de Vídeo -->
+        <div class="video-modal" id="videoModal">
+            <span class="close-modal"><i class="fas fa-times"></i></span>
+            <iframe src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <script>
+            // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
         // Menu Mobile
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('nav');
