@@ -174,6 +174,30 @@
         }
         .service-hero .btn { margin: 0 0.5rem; }
         /* Botões */
+        /* Botão Voltar */
+        .back-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradiente);
+            color: var(--branco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--sombra);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-5px);
+            background: var(--azul-vibrante);
+        }
         .btn {
             display: inline-block;
             padding: 0.9rem 2.2rem;
@@ -647,28 +671,79 @@
             </div>
         </div>
     </footer>
+    <!-- Botão Voltar ao Topo -->
+    <a href="#" class="back-btn"><i class="fas fa-arrow-up"></i></a>
     <script>
-        // Mobile Menu Toggle
+    // Mobile Menu Toggle - Versão melhorada
+    document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('nav');
-        mobileMenuBtn.addEventListener('click', () => {
+        const header = document.querySelector('header');
+        
+        // Função para alternar o menu
+        function toggleMenu() {
             nav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = nav.classList.contains('active') ?
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            
+            // Impede o scroll da página quando o menu está aberto
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        // Evento de clique no botão do menu
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Impede que o clique se propague
+            toggleMenu();
         });
+
+        // Botão de voltar ao topo
+        const backBtn = document.querySelector('.back-btn');
+        if (backBtn) {
+            window.addEventListener('scroll', function() {
+                backBtn.classList.toggle('active', window.scrollY > 300);
+            });
+            
+            backBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Fecha o menu ao clicar em qualquer link dentro dele
         document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) { // Só fecha o menu em dispositivos móveis
+                    toggleMenu();
+                    document.body.style.overflow = 'auto'; // Restaura o scroll
+                }
             });
         });
-        // Fecha menu ao clicar fora
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn') && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(e) {
+            // Verifica se o clique foi fora do menu e do botão do menu
+            if (!nav.contains(e.target) && e.target !== mobileMenuBtn && nav.classList.contains('active')) {
+                toggleMenu();
+                document.body.style.overflow = 'auto'; // Restaura o scroll
             }
         });
-    </script>
+
+        // Impede que o menu feche ao clicar dentro dele
+        nav.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Fecha o menu ao redimensionar a tela para desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && nav.classList.contains('active')) {
+                toggleMenu();
+                document.body.style.overflow = 'auto'; // Restaura o scroll
+            }
+        });
+    });
+</script>
 </body>
 </html>

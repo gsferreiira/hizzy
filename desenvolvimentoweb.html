@@ -651,7 +651,7 @@
             
             nav {
                 position: fixed;
-                top: 80px;
+                top: 59px;
                 left: 0;
                 width: 100%;
                 background: var(--branco);
@@ -1104,8 +1104,10 @@
             </div>
         </div>
     </footer>
+        <!-- Botão Voltar ao Topo -->
+        <a href="#" class="back-btn"><i class="fas fa-arrow-up"></i></a>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const carrossel = document.querySelector('.carrossel');
         const slides = document.querySelectorAll('.carrossel-slide');
         const prevBtn = document.querySelector('.prev-btn');
@@ -1157,6 +1159,84 @@
                 currentIndex = (currentIndex + 1) % totalSlides;
                 updateCarrossel();
             }, 5000);
+        });
+
+        // Mobile Menu Toggle - Código atualizado
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        const header = document.querySelector('header');
+
+        // Função para alternar o menu
+        function toggleMenu() {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            
+            // Impede o scroll da página quando o menu está aberto
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Evento de clique no botão do menu
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Impede que o clique se propague
+            toggleMenu();
+        });
+
+        // Fecha o menu ao clicar em qualquer link dentro dele
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) { // Só fecha o menu em dispositivos móveis
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(e) {
+            // Verifica se o clique foi fora do menu e do botão do menu
+            if (!nav.contains(e.target) && e.target !== mobileMenuBtn) {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = ''; // Restaura o scroll
+            }
+        });
+
+        // Impede que o menu feche ao clicar dentro dele
+        nav.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        // Botão de voltar ao topo
+        const backBtn = document.querySelector('.back-btn');
+        if (backBtn) {
+            window.addEventListener('scroll', function() {
+                backBtn.classList.toggle('active', window.scrollY > 300);
+            });
+            
+            backBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Smooth scrolling para links do menu
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#' || targetId.startsWith('http')) return;
+                
+                // Scroll suave para a seção
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     });
 </script>

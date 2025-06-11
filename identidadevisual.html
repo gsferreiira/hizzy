@@ -1069,64 +1069,132 @@
 <a href="#" class="back-btn"><i class="fas fa-arrow-up"></i></a>
 
 <script>
-    // Script para o carrossel
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carrossel-slide');
-    const indicators = document.querySelectorAll('.carrossel-indicator');
-    
-    function showSlide(index) {
-        if (index >= slides.length) currentSlide = 0;
-        if (index < 0) currentSlide = slides.length - 1;
+    // Menu Mobile Avançado
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        const body = document.body;
         
-        document.querySelector('.carrossel').style.transform = `translateX(-${currentSlide * 100}%)`;
+        // Função para alternar o menu
+        function toggleMenu() {
+            const isOpen = nav.classList.toggle('active');
+            
+            // Alterna o ícone
+            mobileMenuBtn.innerHTML = isOpen 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+            
+            // Bloqueia/libera o scroll da página
+            body.style.overflow = isOpen ? 'hidden' : '';
+            
+            // Adiciona/remove classe no body para estilos adicionais se necessário
+            body.classList.toggle('menu-open', isOpen);
+        }
         
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === currentSlide);
+        // Evento de clique no botão do menu
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Impede a propagação para o document.click
+            toggleMenu();
         });
-    }
-    
-    document.querySelector('.next-btn').addEventListener('click', () => {
-        currentSlide++;
-        showSlide(currentSlide);
-    });
-    
-    document.querySelector('.prev-btn').addEventListener('click', () => {
-        currentSlide--;
-        showSlide(currentSlide);
-    });
-    
-    indicators.forEach((indicator, i) => {
-        indicator.addEventListener('click', () => {
-            currentSlide = i;
-            showSlide(currentSlide);
+        
+        // Fecha o menu ao clicar em qualquer link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) { // Só fecha em mobile
+                    toggleMenu();
+                }
+            });
         });
-    });
-    
-    // Auto-avanço do carrossel
-    setInterval(() => {
-        currentSlide++;
-        showSlide(currentSlide);
-    }, 5000);
-    
-    // Menu mobile
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('nav');
-    
-    menuBtn.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        menuBtn.innerHTML = nav.classList.contains('active') 
-            ? '<i class="fas fa-times"></i>' 
-            : '<i class="fas fa-bars"></i>';
-    });
-    
-    // Botão voltar ao topo
-    const backBtn = document.querySelector('.back-btn');
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backBtn.classList.add('active');
-        } else {
-            backBtn.classList.remove('active');
+        
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target) && e.target !== mobileMenuBtn && nav.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+        
+        // Impede que o clique dentro do menu feche-o
+        nav.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // Fecha o menu ao redimensionar para desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && nav.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+        
+        // Botão voltar ao topo
+        const backBtn = document.querySelector('.back-btn');
+        if (backBtn) {
+            window.addEventListener('scroll', function() {
+                backBtn.classList.toggle('active', window.scrollY > 300);
+            });
+            
+            backBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Script para o carrossel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carrossel-slide');
+        const indicators = document.querySelectorAll('.carrossel-indicator');
+        
+        function showSlide(index) {
+            // Ajusta o índice se for além dos limites
+            currentSlide = (index + slides.length) % slides.length;
+            
+            // Move o carrossel
+            document.querySelector('.carrossel').style.transform = 
+                `translateX(-${currentSlide * 100}%)`;
+            
+            // Atualiza indicadores
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentSlide);
+            });
+        }
+        
+        // Eventos de navegação
+        document.querySelector('.next-btn')?.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+        
+        document.querySelector('.prev-btn')?.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+        
+        // Eventos dos indicadores
+        indicators?.forEach((indicator, i) => {
+            indicator.addEventListener('click', () => {
+                showSlide(i);
+            });
+        });
+        
+        // Auto-avanço do carrossel
+        let carrosselInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+        
+        // Pausa o auto-avanço quando o mouse está sobre o carrossel
+        const carrosselContainer = document.querySelector('.carrossel-container');
+        if (carrosselContainer) {
+            carrosselContainer.addEventListener('mouseenter', () => {
+                clearInterval(carrosselInterval);
+            });
+            
+            carrosselContainer.addEventListener('mouseleave', () => {
+                carrosselInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 5000);
+            });
         }
     });
 </script>
+</body>
+</html>
