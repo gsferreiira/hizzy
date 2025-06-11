@@ -746,6 +746,187 @@
                 padding: 1.5rem;
             }
         }
+        /* Ajustes gerais para telas pequenas */
+        @media (max-width: 768px) {
+            /* Redução no padding das seções */
+            section {
+                padding: 3rem 0;
+            }
+            
+            /* Ajuste no container para usar mais espaço */
+            .container {
+                width: 95%;
+                padding: 0 0.5rem;
+            }
+            
+            /* Melhor espaçamento para títulos */
+            .section-title {
+                margin-bottom: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+            
+            /* Ajuste no hero section */
+            .service-hero {
+                padding: 7rem 0 3rem;
+            }
+            
+            .service-hero h1 {
+                font-size: 2rem;
+                padding: 0 0.5rem;
+            }
+            
+            .service-hero p {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+            
+            /* Carrossel mais compacto */
+            .carrossel-img {
+                height: 220px;
+            }
+            
+            .carrossel-caption {
+                padding: 1rem;
+            }
+            
+            .carrossel-caption h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .carrossel-caption p {
+                font-size: 0.8rem;
+            }
+            
+            .carrossel-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            
+            /* Ajuste nos cards de serviço */
+            .service-details {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+            
+            .service-feature {
+                padding: 1.5rem;
+            }
+            
+            .service-feature i {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .service-feature h3 {
+                font-size: 1.3rem;
+            }
+            
+            /* Processo de trabalho mais compacto */
+            .process-step {
+                padding-left: 60px;
+                margin-bottom: 2rem;
+            }
+            
+            .step-number {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .step-content {
+                padding: 1.2rem;
+            }
+        }
+        /* Ajustes específicos para telas muito pequenas (até 360px) */
+        @media (max-width: 360px) {
+            /* Tamanhos de fonte menores */
+            .service-hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+            
+            /* Espaçamentos mais compactos */
+            section {
+                padding: 2.5rem 0;
+            }
+            
+            /* Carrossel mais baixo */
+            .carrossel-img {
+                height: 180px;
+            }
+            
+            /* Processo de trabalho mais compacto */
+            .process-step {
+                padding-left: 50px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        /* Orientação paisagem */
+        @media (max-width: 768px) and (orientation: landscape) {
+            /* Ajuste de altura para elementos grandes */
+            .service-hero {
+                padding: 5rem 0 2rem;
+            }
+            
+            .carrossel-img {
+                height: 200px;
+            }
+            
+            /* Seções mais compactas */
+            section {
+                padding: 2rem 0;
+            }
+            
+            /* Grid de serviços em 2 colunas */
+            .service-details {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        /* Garantir que imagens não estiquem */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Prevenir overflow horizontal */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Ajuste fino para botões */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Menu mobile mais acessível */
+        .mobile-menu-btn {
+            padding: 12px;
+        }
+        
+        nav ul li a {
+            padding: 8px 0;
+        }
     </style>
 </head>
 <body>
