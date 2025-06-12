@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" href="assets/logo.png?v=2" type="image/png">
+    <link rel="shortcut icon" href="assets/Logo Hizzy.png" type="image/x-icon">
 
     <style>
         /* Reset e Variáveis */
@@ -160,7 +160,7 @@
         }
         
         .logo {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: var(--gradiente);
             -webkit-background-clip: text;
@@ -173,7 +173,7 @@
         }
         
         .logo i {
-            font-size: 1.89rem;
+            font-size: 1.5rem;
         }
         
         nav ul {
@@ -441,38 +441,43 @@
             background: #F8FAFC;
             position: relative;
             overflow: hidden;
+            padding: 6rem 0; /* Reduzi um pouco o padding */
         }
-        
+
         .portfolio-container {
             position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
-        
+
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin: 0 auto;
+            width: 100%;
         }
-        
+
         .portfolio-item {
             border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--sombra);
             transition: all 0.3s;
             position: relative;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 400px;
         }
-        
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
+
         .portfolio-img {
             width: 100%;
             height: 250px;
             object-fit: cover;
             display: block;
         }
-        
+
         .portfolio-overlay {
             position: absolute;
             bottom: 0;
@@ -482,18 +487,18 @@
             padding: 1.5rem;
             color: var(--branco);
         }
-        
+
         .portfolio-overlay h3 {
             margin-bottom: 0.5rem;
             font-size: 1.3rem;
         }
-        
+
         .portfolio-overlay p {
             opacity: 0.9;
             margin-bottom: 1rem;
             font-size: 0.9rem;
         }
-        
+
         .portfolio-overlay a {
             color: var(--branco);
             text-decoration: none;
@@ -503,16 +508,59 @@
             gap: 0.5rem;
             transition: all 0.3s;
         }
-        
+
         .portfolio-overlay a:hover {
             color: var(--destaque);
         }
-        
+
         .portfolio-buttons {
             display: flex;
             justify-content: center;
             margin-top: 3rem;
-            gap: 1rem;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 992px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            
+            .portfolio-item {
+                max-width: 100%;
+            }
+            
+            .portfolio-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .portfolio-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #portfolio {
+                padding: 4rem 0;
+            }
+            
+            .portfolio-img {
+                height: 200px;
+            }
+            
+            .portfolio-overlay {
+                padding: 1rem;
+            }
         }
 
         /* Depoimentos */
@@ -1522,7 +1570,7 @@
         <div class="hero-pattern"></div>
         <div class="container">
             <div class="hero-content">
-                <h1>Soluções digitais <span>sob medida</span> para <span>alavancar </span>seu negócio</h1>
+                <h1>Soluções digitais <span>sob medida</span> para seu negócio</h1>
                 <p>Da criação de sites à automação de processos, entregamos resultados que impulsionam sua marca no mundo digital com tecnologia de ponta e design inovador.</p>
                 <div class="hero-buttons">
                     <a href="#servicos" class="btn btn-primary">Nossos Serviços</a>
@@ -1617,11 +1665,11 @@
             <div class="portfolio-container">
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <img src="assets/Logo Maedu.jpeg" alt="Projeto 1" class="portfolio-img">
+                        <img src="assets/fnlogo.png" alt="Projeto 1" class="portfolio-img">
                         <div class="portfolio-overlay">
                             <h3>Site Empresarial</h3>
-                            <p>Cliente: Maedu Store</p>
-                            <a href="https://maedu.store/" target="_blank">Ver detalhes <i class="fas fa-external-link-alt"></i></a>
+                            <p>Cliente: FN Empreendimentos</p>
+                            <a href="https://www.fnempreendimentos.com/" target="_blank">Ver detalhes <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <div class="portfolio-item">
@@ -1629,15 +1677,7 @@
                         <div class="portfolio-overlay">
                             <h3>Site / Sistema de Automação</h3>
                             <p>Cliente: Legacy Style</p>
-                            <a href="https://www.legacystyle.com.br">Ver detalhes <i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="assets/sitemaedu.png" alt="Projeto 3" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h3>Sistema de Automação</h3>
-                            <p>Cliente: Empresa Z</p>
-                            <a href="#">Ver detalhes <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://www.legacystyle.com.br" target="_blank">Ver detalhes <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1667,10 +1707,10 @@
                     </div>
                     <p>"A Hizzy transformou completamente nossa presença online. O site que desenvolveram superou todas as nossas expectativas e já gerou um aumento de 40% em nossos leads em apenas 2 meses."</p>
                     <div class="depoimento-author">
-                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Cliente 1">
+                        <img src="https://randomuser.me/api/portraits/men/7.jpg" alt="Cliente 1">
                         <div class="author-info">
-                            <h4>Maria Eduarda</h4>
-                            <span>CEO, Empresa Maedu Store</span>
+                            <h4>Luiz Rocha</h4>
+                            <span>CEO, Empresa Climb Agency</span>
                         </div>
                     </div>
                 </div>
