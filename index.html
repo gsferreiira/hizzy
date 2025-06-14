@@ -272,13 +272,16 @@
             right: 10%;
             transform: translateY(-50%);
             width: 40%;
-            max-width: 700px;
+            max-width: 1-00px;
             z-index: 1;
             animation: flutuar 8s ease-in-out infinite;
         }
 
-
-
+        .hero-img img {
+            width: 120%;
+            height: auto;
+            display: block;
+        }
         
         .hero-pattern {
             position: absolute;
@@ -393,10 +396,12 @@
             align-items: center;
             gap: 0.5rem;
             transition: all 0.3s;
+            font-size: 16px;
         }
         
         .servico-card a:hover {
-            color: var(--destaque);
+            color: orange;
+            font-size: 20px;
         }
         
         .servico-card a i {
@@ -1578,7 +1583,7 @@
                 </div>
             </div>
             <div class="hero-img">
-                <img src="assets/Mascote Hizzy.png" alt="Soluções Digitais">
+                <img src="assets/1.png" alt="Soluções Digitais">
             </div>
             <a href="#servicos" class="scroll-down">
                 <i class="fas fa-chevron-down"></i>
@@ -1601,7 +1606,7 @@
                     </div>
                     <h3>Desenvolvimento Web</h3>
                     <p>Sites institucionais, landing pages e e-commerces com design responsivo, alta performance e tecnologia de ponta.</p>
-                    <a href="desenvolvimentoweb.html">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="desenvolvimentoweb.html">Clique para saber mais<i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="servico-card">
                     <div class="servico-icon accent">
@@ -1609,7 +1614,7 @@
                     </div>
                     <h3>Automação</h3>
                     <p>Sistemas inteligentes para otimizar processos, reduzir custos e aumentar sua produtividade de forma significativa.</p>
-                    <a href="automacao.html">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="automacao.html">Clique para saber mais<i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="servico-card">
                     <div class="servico-icon">
@@ -1617,7 +1622,7 @@
                     </div>
                     <h3>Identidade Visual</h3>
                     <p>Criação de marcas memoráveis com estratégia de design, aplicação consistente e diretrizes de uso profissional.</p>
-                    <a href="identidadevisual.html">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="identidadevisual.html">Clique para saber mais<i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="servico-card">
                     <div class="servico-icon accent">
@@ -1625,7 +1630,7 @@
                     </div>
                     <h3>Produção de Vídeos</h3>
                     <p>Conteúdo audiovisual profissional para engajar seu público e aumentar sua autoridade nas redes sociais.</p>
-                    <a href="criacaodevideos.html">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="criacaodevideos.html">Clique para saber mais<i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -1636,7 +1641,7 @@
         <div class="container">
             <div class="stats-container">
                 <div class="stat-item">
-                    <div class="stat-number">15+</div>
+                    <div class="stat-number">10+</div>
                     <div class="stat-label">Projetos Concluídos</div>
                 </div>
                 <div class="stat-item">
@@ -1644,13 +1649,13 @@
                     <div class="stat-label">Clientes Satisfeitos</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Prêmios Recebidos</div>
-                </div>
-                <div class="stat-item">
                     <div class="stat-number">1+</div>
                     <div class="stat-label">Anos de Experiência</div>
                 </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                <div class="stat-label">Suporte Disponível</div>
+            </div>
             </div>
         </div>
     </section>
@@ -1737,7 +1742,7 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                     <p>"A identidade visual criada pela Hizzy capturou perfeitamente a essência da nossa marca. O feedback de nossos clientes tem sido extremamente positivo e já vimos um aumento no reconhecimento da marca."</p>
                     <div class="depoimento-author">
@@ -1905,9 +1910,7 @@
                     <p>Transformando ideias em experiências digitais memoráveis. Nossa missão é ajudar empresas a crescer com soluções tecnológicas inovadoras.</p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/hizzybr/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="https://wa.me/5541995932150?text=Olá,%20vim%20pelo%20site%20da%20Hizzy%20e%20gostaria%20de%20mais%20informações." target="_blank"><i class="fab fa-whatsapp"></i></a>
-
                     </div>
                 </div>
                 <div class="footer-col">
@@ -2036,7 +2039,7 @@
 
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
-    
+
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         
@@ -2052,38 +2055,232 @@
             item.classList.toggle('active');
         });
     });
-    
-    // Chatbot Toggle
+
+    // Chatbot Toggle - Versão com Efeito de Digitação
     const chatbotTrigger = document.querySelector('.chatbot-trigger');
     const chatbotContainer = document.querySelector('.chatbot-container');
     const chatbotClose = document.querySelector('.chatbot-close');
     const chatbotBody = document.querySelector('.chatbot-body');
     const chatbotInput = document.querySelector('.chatbot-input input');
     const chatbotSend = document.querySelector('.chatbot-input button');
-    
-    // Respostas pré-definidas
-    const chatbotResponses = {
-        "olá": "Olá! Sou o assistente virtual da Hizzy. Como posso te ajudar hoje? 😊:<br><br>• Nossos serviços<br>• Orçamentos<br>• Portfólio<br>• Prazos<br>• Formas de contato",
-        "oi": "Oi! Tudo bem? Sou o assistente da Hizzy. Posso te ajudar com informações sobre nossos serviços digitais.",
-        "serviços": "🔹 Nossos serviços principais:<br><br>• <strong>Desenvolvimento Web</strong> - Sites institucionais, landing pages e e-commerce<br>• <strong>Automação</strong> - Bots para Instagram e WhatsApp, fluxos automatizados<br>• <strong>Identidade Visual</strong> - Logos, branding e materiais gráficos<br>• <strong>Edição de Vídeos</strong> - Conteúdo para redes sociais<br><br>Qual te interessa mais?",
-        "orçamento": "💵 Para solicitar um orçamento:<br><br>1) Clique no botão <strong>'Orçamento'</strong> no menu<br>2) Preencha o formulário na seção <a href='#contato' style='color: var(--azul-vibrante); font-weight:600;'>Contato</a><br>3) Ou nos chame no WhatsApp: <a href='https://wa.me/5511987654321' style='color: var(--azul-vibrante); font-weight:600;'>(11) 98765-4321</a>",
-        "portfolio": "🎨 Confira nossos trabalhos:<br><br>• Na seção <a href='#portfolio' style='color: var(--azul-vibrante); font-weight:600;'>Portfólio</a> deste site<br>• No nosso <a href='#' style='color: var(--azul-vibrante); font-weight:600;'>Behance</a><br>• No <a href='#' style='color: var(--azul-vibrante); font-weight:600;'>Instagram</a> @Hizzy.digital",
-        "contato": "📞 <strong>Nossos contatos:</strong><br><br>• Email: <a href='mailto:contato@Hizzy.digital' style='color: var(--azul-vibrante); font-weight:600;'>contato@Hizzy.digital</a><br>• WhatsApp: <a href='https://wa.me/5511987654321' style='color: var(--azul-vibrante); font-weight:600;'>(11) 98765-4321</a><br>• Endereço: Av. Paulista, 1000 - São Paulo/SP",
-        "tempo": "⏱️ <strong>Prazos médios:</strong><br><br>• Sites simples: 2-3 semanas<br>• E-commerces: 4-6 semanas<br>• Identidade Visual: 1-2 semanas<br>• Automações: varia conforme complexidade<br><br>Podemos confirmar após análise do seu projeto!",
-        "agradecimento": "De nada! 😊 Se tiver mais alguma dúvida, é só perguntar. Estou aqui para ajudar!",
-        "default": "🤔 Não entendi completamente. Posso te ajudar com:<br><br>• Tipos de serviços<br>• Como solicitar orçamento<br>• Ver exemplos de trabalho<br>• Prazos de entrega<br>• Nossos contatos"
+
+    // Variável para controlar o estado de "digitando"
+    let isTyping = false;
+
+    // Serviços detalhados para o chatbot
+    const servicosDetalhados = {
+        "desenvolvimento": {
+            titulo: "🚀 Desenvolvimento Web",
+            descricao: "Criamos soluções web personalizadas para alavancar seu negócio digital.",
+            itens: [
+                "• Sites institucionais responsivos",
+                "• Landing pages de alta conversão",
+                "• E-commerces completos (Shopify, WooCommerce, VTEX)",
+                "• Sistemas web personalizados",
+                "• Aplicações Single Page (SPA)",
+                "• Integração com APIs e sistemas legados"
+            ],
+            preco: "A partir de R$ 1.500 (site básico) até R$ 15.000+ (e-commerce complexo)",
+            prazo: "De 2 semanas (landing page) a 8 semanas (e-commerce completo)"
+        },
+        "automação": {
+            titulo: "⚡ Automação de Processos",
+            descricao: "Automatizamos tarefas repetitivas para aumentar sua produtividade.",
+            itens: [
+                "• Bots para WhatsApp/Telegram",
+                "• Automação de redes sociais",
+                "• Fluxos de atendimento automatizados",
+                "• Integração entre sistemas (Zapier, Make.com)",
+                "• Web scraping e coleta de dados",
+                "• Processamento automatizado de documentos"
+            ],
+            preco: "A partir de R$ 800 (bot simples) até R$ 5.000+ (sistema complexo)",
+            prazo: "De 1 semana (bot básico) a 4 semanas (sistema completo)"
+        },
+        "design": {
+            titulo: "🎨 Identidade Visual",
+            descricao: "Desenvolvemos marcas memoráveis que comunicam sua essência.",
+            itens: [
+                "• Logotipos profissionais",
+                "• Manual da marca completo",
+                "• Cartões de visita e papelaria",
+                "• Apresentações corporativas",
+                "• Design para redes sociais",
+                "• Mockups e materiais promocionais"
+            ],
+            preco: "A partir de R$ 600 (logo básico) até R$ 3.500 (identidade completa)",
+            prazo: "De 1 semana (logo) a 3 semanas (projeto completo)"
+        },
+        "vídeos": {
+            titulo: "🎥 Produção de Vídeos",
+            descricao: "Criamos conteúdo audiovisual profissional para suas redes sociais.",
+            itens: [
+                "• Edição de vídeos profissionais",
+                "• Motion graphics e animações",
+                "• Vídeos institucionais",
+                "• Reels/TikToks impactantes",
+                "• Legendas e efeitos especiais",
+                "• Tratamento de áudio e color grading"
+            ],
+            preco: "A partir de R$ 50/vídeo (edições simples) até R$ 1.500+ (vídeos profissionais)",
+            prazo: "De 2 dias (edições simples) a 3 semanas (projeto completo)"
+        }
     };
-    
-    // Função para adicionar mensagem ao chat
-    function addMessage(text, isUser = false) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
-        messageDiv.innerHTML = text;
-        chatbotBody.appendChild(messageDiv);
+
+    // Respostas aprimoradas do chatbot
+    const chatbotResponses = {
+        "saudacao": {
+            texto: "Olá! Sou o assistente virtual da Hizzy. Como posso te ajudar hoje? 😊",
+            opcoes: [
+                "• Nossos serviços",
+                "• Solicitar orçamento",
+                "• Ver portfólio",
+                "• Prazos de entrega",
+                "• Falar com atendente"
+            ]
+        },
+        "servicos": {
+            texto: "🔹 Nossos Serviços Principais 🔹<br><br>",
+            opcoes: [
+                "1️⃣ Desenvolvimento Web",
+                "2️⃣ Automação de Processos",
+                "3️⃣ Identidade Visual",
+                "4️⃣ Produção de Vídeos",
+                "🔙 Voltar ao menu principal"
+            ],
+            detalhes: "Digite o número ou nome do serviço que deseja saber mais detalhes."
+        },
+        "orcamento": {
+            texto: "💵 Solicitar Orçamento<br><br>" +
+                "Para receber um orçamento personalizado:<br><br>" +
+                "1) Clique no botão <a href='#contato' style='color: var(--azul-vibrante); font-weight:600;'>'Orçamento'</a> no menu<br>" +
+                "2) Preencha nosso formulário online<br>" +
+                "3) Ou chame no WhatsApp: <a href='https://wa.me/5541995932150' style='color: var(--azul-vibrante); font-weight:600;'>(41) 99593-2150</a><br><br>" +
+                "Precisamos saber:<br>" +
+                "• Tipo de projeto<br>" +
+                "• Prazos desejados<br>" +
+                "• Exemplos de referência (se tiver)"
+        },
+        "portfolio": {
+            texto: "🎨 Nosso Portfólio<br><br>" +
+                "Confira alguns de nossos trabalhos recentes:<br><br>" +
+                "• <a href='#portfolio' style='color: var(--azul-vibrante); font-weight:600;'>FN Empreendimentos</a> - Site institucional<br>" +
+                "• <a href='#portfolio' style='color: var(--azul-vibrante); font-weight:600;'>Legacy Style</a> - Sistema de automação<br><br>" +
+                "Veja mais no nosso <a href='https://www.instagram.com/hizzybr/' style='color: var(--azul-vibrante); font-weight:600;' target='_blank'>Instagram</a> @hizzybr"
+        },
+        "prazos": {
+            texto: "⏱️ Prazos Médios<br><br>" +
+                "• Sites institucionais: 2-3 semanas<br>" +
+                "• E-commerces: 4-6 semanas<br>" +
+                "• Identidade Visual: 1-2 semanas<br>" +
+                "• Automações: 1-4 semanas (varia conforme complexidade)<br>" +
+                "• Edição de vídeos: 2-5 dias (por vídeo)<br><br>" +
+                "Podemos confirmar prazos exatos após análise do seu projeto."
+        },
+        "contato": {
+            texto: "📞 Nossos Contatos<br><br>" +
+                "• WhatsApp: <a href='https://wa.me/5541995932150' style='color: var(--azul-vibrante); font-weight:600;'>(41) 99593-2150</a><br>" +
+                "• Email: <a href='mailto:hizzy.com.br@gmail.com' style='color: var(--azul-vibrante); font-weight:600;'>hizzy.com.br@gmail.com</a><br>" +
+                "• Endereço: Curitiba, PR<br>" +
+                "• Horário: Seg-Sex, 9h-18h"
+        },
+        "agradecimento": "Obrigado por conversar comigo! 😊<br>Se precisar de mais alguma coisa, estou à disposição.",
+        "default": "🤔 Não entendi completamente. Posso te ajudar com:<br><br>" +
+                "• Serviços - Digite 'serviços'<br>" +
+                "• Orçamento - Digite 'orçamento'<br>" +
+                "• Portfólio - Digite 'portfólio'<br>" +
+                "• Contato - Digite 'contato'"
+    };
+
+    // Função para formatar resposta do serviço
+    function formatarServico(servico) {
+        let resposta = `${servico.titulo}<br><br>${servico.descricao}<br><br>`;
+        resposta += `O que incluímos:<br>${servico.itens.join('<br>')}<br><br>`;
+        resposta += `Investimento: ${servico.preco}<br>`;
+        resposta += `Prazo médio: ${servico.prazo}<br><br>`;
+        resposta += `Digite 'orçamento' para solicitar um orçamento específico ou 'voltar' para o menu anterior.`;
+        return resposta;
+    }
+
+    // Função para criar efeito de digitação
+    function typeEffect(element, text, speed = 20) {
+        return new Promise((resolve) => {
+            let i = 0;
+            element.innerHTML = '';
+            isTyping = true;
+            
+            const typingInterval = setInterval(() => {
+                if (i < text.length) {
+                    // Adiciona caracteres HTML corretamente
+                    if (text.substr(i, 4) === '<br>') {
+                        element.innerHTML += '<br>';
+                        i += 4;
+                    } else if (text.substr(i, 3) === '<a ') {
+                        // Encontra o fechamento da tag <a>
+                        const closeIndex = text.indexOf('</a>', i) + 4;
+                        element.innerHTML += text.substring(i, closeIndex);
+                        i = closeIndex;
+                    } else {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                    }
+                    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+                } else {
+                    clearInterval(typingInterval);
+                    isTyping = false;
+                    resolve();
+                }
+            }, speed);
+        });
+    }
+
+    // Função para mostrar indicador "digitando..."
+    function showTypingIndicator() {
+        if (isTyping) return;
+        
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'chatbot-message bot typing-indicator';
+        typingDiv.id = 'typing-indicator';
+        typingDiv.innerHTML = '<span></span><span></span><span></span>';
+        chatbotBody.appendChild(typingDiv);
         chatbotBody.scrollTop = chatbotBody.scrollHeight;
     }
-    
-    // Processar a mensagem do usuário
+
+    // Função para remover indicador "digitando..."
+    function hideTypingIndicator() {
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+
+    // Função para adicionar mensagem ao chat com efeito de digitação
+    async function addMessage(text, isUser = false) {
+        if (isUser) {
+            // Mensagem do usuário aparece instantaneamente
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+            messageDiv.innerHTML = text;
+            chatbotBody.appendChild(messageDiv);
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        } else {
+            // Mensagem do bot tem efeito de digitação
+            showTypingIndicator();
+            
+            // Cria a div da mensagem vazia
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chatbot-message bot';
+            chatbotBody.appendChild(messageDiv);
+            
+            // Remove o indicador e inicia o efeito de digitação
+            setTimeout(async () => {
+                hideTypingIndicator();
+                await typeEffect(messageDiv, text);
+            }, 1000 + Math.random() * 1000); // Tempo aleatório entre 1-2s
+        }
+    }
+
+    // Processar mensagem do usuário - Versão Aprimorada
     function processMessage() {
         const message = chatbotInput.value.toLowerCase().trim();
         
@@ -2097,54 +2294,106 @@
         setTimeout(() => {
             let response = chatbotResponses.default;
             
-            // Verifica palavras-chave
-            if (message.includes('olá') || message.includes('ola') || message.includes('oi') || message.includes('bom dia') || message.includes('boa tarde') || message.includes('boa noite')) {
-                response = chatbotResponses["olá"];
-            } else if (message.includes('serviço') || message.includes('servico') || message.includes('fazem') || message.includes('oferecem')) {
-                response = chatbotResponses["serviços"];
-            } else if (message.includes('orçamento') || message.includes('orcamento') || message.includes('preço') || message.includes('preco') || message.includes('valor') || message.includes('custo')) {
-                response = chatbotResponses["orçamento"];
-            } else if (message.includes('portfólio') || message.includes('portfolio') || message.includes('trabalhos') || message.includes('projetos') || message.includes('clientes')) {
-                response = chatbotResponses["portfolio"];
-            } else if (message.includes('contato') || message.includes('falar') || message.includes('email') || message.includes('telefone') || message.includes('whatsapp')) {
-                response = chatbotResponses["contato"];
-            } else if (message.includes('tempo') || message.includes('prazo') || message.includes('entrega') || message.includes('demora')) {
-                response = chatbotResponses["tempo"];
-            } else if (message.includes('obrigad') || message.includes('agradeço') || message.includes('valeu') || message.includes('grato')) {
-                response = chatbotResponses["agradecimento"];
+            // Verifica intenções
+            if (/olá|ola|oi|bom\s(dia|tarde|noite)/i.test(message)) {
+                response = `${chatbotResponses.saudacao.texto}<br><br>${chatbotResponses.saudacao.opcoes.join('<br>')}`;
+            
+            } else if (/servi[çc]os|o que fazem|o que oferecem/i.test(message)) {
+                response = `${chatbotResponses.servicos.texto}${chatbotResponses.servicos.opcoes.join('<br>')}<br><br>${chatbotResponses.servicos.detalhes}`;
+            
+            } else if (/or[çc]amento|pre[çc]o|valor|custo|quanto custa/i.test(message)) {
+                response = chatbotResponses.orcamento.texto;
+            
+            } else if (/portf[óo]lio|trabalhos|projetos|já fizeram/i.test(message)) {
+                response = chatbotResponses.portfolio.texto;
+            
+            } else if (/prazos|quanto tempo|entrega|demora/i.test(message)) {
+                response = chatbotResponses.prazos.texto;
+            
+            } else if (/contato|falar|email|telefone|whatsapp/i.test(message)) {
+                response = chatbotResponses.contato.texto;
+            
+            } else if (/1|desenvolvimento|site|web|ecommerce/i.test(message)) {
+                response = formatarServico(servicosDetalhados.desenvolvimento);
+            
+            } else if (/2|automa[çc][aã]o|bot|processo/i.test(message)) {
+                response = formatarServico(servicosDetalhados.automação);
+            
+            } else if (/3|design|identidade|logo|marca/i.test(message)) {
+                response = formatarServico(servicosDetalhados.design);
+            
+            } else if (/4|v[íi]deos|edi[çc][aã]o|reels|tiktok/i.test(message)) {
+                response = formatarServico(servicosDetalhados.vídeos);
+            
+            } else if (/obrigad|agrade[çc]o|valeu|grato/i.test(message)) {
+                response = chatbotResponses.agradecimento;
+            
+            } else if (/voltar|menu|in[íi]cio/i.test(message)) {
+                response = `${chatbotResponses.saudacao.texto}<br><br>${chatbotResponses.saudacao.opcoes.join('<br>')}`;
             }
             
             addMessage(response);
         }, 800);
     }
-    
-    // Event Listeners
+
+    // Adicione este estilo para o indicador de digitação
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .typing-indicator {
+            background: #F0F4F8 !important;
+            padding: 12px 16px !important;
+        }
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background: var(--azul-vibrante);
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            opacity: 0.4;
+        }
+        .typing-indicator span:nth-child(1) {
+            animation: typing-pulse 1s infinite;
+        }
+        .typing-indicator span:nth-child(2) {
+            animation: typing-pulse 1s infinite 0.2s;
+        }
+        .typing-indicator span:nth-child(3) {
+            animation: typing-pulse 1s infinite 0.4s;
+        }
+        @keyframes typing-pulse {
+            0%, 100% { opacity: 0.4; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-3px); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Event Listeners para o Chatbot
     chatbotTrigger.addEventListener('click', () => {
         chatbotContainer.classList.toggle('active');
         if (chatbotContainer.classList.contains('active')) {
             chatbotInput.focus();
-            // Mensagem inicial apenas se o chat estiver vazio
-            if (chatbotBody.children.length === 1) {
-                addMessage(chatbotResponses["olá"]);
+            if (chatbotBody.children.length === 0) {
+                addMessage(`${chatbotResponses.saudacao.texto}<br><br>${chatbotResponses.saudacao.opcoes.join('<br>')}`);
             }
         }
     });
-    
+
     chatbotClose.addEventListener('click', () => {
         chatbotContainer.classList.remove('active');
     });
-    
+
+    chatbotSend.addEventListener('click', processMessage);
+
     chatbotInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             processMessage();
         }
     });
-    
-    chatbotSend.addEventListener('click', processMessage);
-    
+
     // Back to Top Button
     const backToTopBtn = document.querySelector('.back-to-top');
-    
+
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
             backToTopBtn.classList.add('visible');
@@ -2152,7 +2401,7 @@
             backToTopBtn.classList.remove('visible');
         }
     });
-    
+
     backToTopBtn.addEventListener('click', (e) => {
         e.preventDefault();
         window.scrollTo({
@@ -2160,7 +2409,7 @@
             behavior: 'smooth'
         });
     });
-    
+
     // Form submission
     const contactForm = document.querySelector('.contato-form form');
     if (contactForm) {
@@ -2170,7 +2419,7 @@
             this.reset();
         });
     }
-    
+
     // Animate elements when scrolling
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.servico-card, .portfolio-item, .depoimento-card');
@@ -2185,7 +2434,7 @@
             }
         });
     };
-    
+
     // Set initial state for animated elements
     window.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.servico-card, .portfolio-item, .depoimento-card').forEach(element => {
@@ -2197,7 +2446,7 @@
         // Trigger first check
         animateOnScroll();
     });
-    
+
     window.addEventListener('scroll', animateOnScroll);
 
     // Melhorar usabilidade do menu mobile
@@ -2221,6 +2470,53 @@
     document.querySelectorAll('a, button, [role="button"]').forEach(element => {
         element.style.webkitTapHighlightColor = 'rgba(62, 146, 204, 0.2)';
         element.addEventListener('touchstart', () => {}, {passive: true});
+    });
+
+    // Adicionar classe ao header quando scrollar
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 500);
+        }
+    });
+
+    // Form validation
+    const validateForm = (form) => {
+        let isValid = true;
+        const inputs = form.querySelectorAll('input[required], textarea[required]');
+        
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                input.style.borderColor = 'var(--destaque)';
+                isValid = false;
+            } else {
+                input.style.borderColor = '';
+            }
+        });
+        
+        return isValid;
+    };
+
+    // Adicionar validação a todos os forms
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            if (!validateForm(this)) {
+                e.preventDefault();
+                alert('Por favor, preencha todos os campos obrigatórios.');
+            }
+        });
     });
 </script>
 </body>
